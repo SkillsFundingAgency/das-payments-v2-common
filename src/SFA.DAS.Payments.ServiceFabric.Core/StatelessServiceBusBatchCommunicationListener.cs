@@ -1,10 +1,9 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -54,11 +53,9 @@ namespace SFA.DAS.Payments.ServiceFabric.Core
 
         public Task<string> OpenAsync(CancellationToken cancellationToken)
         {
-            //todo consider creating queue and subscription here - maybe use similar method to EnsureQueue called EnsureSubscription
             startingCancellationToken = cancellationToken;
             _ = ListenForMessages(cancellationToken);
             return Task.FromResult(EndpointName);
-            
         }
 
         protected virtual async Task ListenForMessages(CancellationToken cancellationToken)
@@ -210,7 +207,7 @@ namespace SFA.DAS.Payments.ServiceFabric.Core
             var typeName = enclosedTypes.Split(';').FirstOrDefault();
             if (string.IsNullOrEmpty(typeName))
                 throw new InvalidOperationException($"Message type not found when trying to deserialise the message.  Message id: {message.MessageId}, label: {message.Label}");
-            var messageType = Type.GetType(typeName, assemblyName => { assemblyName.Version = null; return Assembly.Load(assemblyName); }, null);
+            var messageType = Type.GetType(typeName, assemblyName => { assemblyName.Version = null; return Assembly.Load(assemblyName); },null );
             var sanitisedMessageJson = GetMessagePayload(message);
             var deserialisedMessage = JsonConvert.DeserializeObject(sanitisedMessageJson, messageType);
             return deserialisedMessage;
