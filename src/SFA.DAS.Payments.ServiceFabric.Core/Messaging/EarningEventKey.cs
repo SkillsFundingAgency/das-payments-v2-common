@@ -11,8 +11,6 @@ namespace SFA.DAS.Payments.ServiceFabric.Core.Messaging
         public Learner Learner { get; set; }
         public LearningAim LearningAim { get; set; }
         public CollectionPeriod CollectionPeriod { get; set; }
-        public string EventType {  get; set;}
-
         public virtual string Key => CreateKey();
         public virtual string LogSafeKey => CreateLogSafeKey();
 
@@ -21,7 +19,7 @@ namespace SFA.DAS.Payments.ServiceFabric.Core.Messaging
 
         }
 
-        public EarningEventKey(IPaymentsEvent earningEvent)
+        public EarningEventKey(PaymentsEvent earningEvent)
         {
             if (earningEvent == null) throw new ArgumentNullException(nameof(earningEvent));
             JobId = earningEvent.JobId;
@@ -43,17 +41,24 @@ namespace SFA.DAS.Payments.ServiceFabric.Core.Messaging
                 StandardCode = earningEvent.LearningAim.StandardCode,
                 ProgrammeType = earningEvent.LearningAim.ProgrammeType
             };
-            EventType = earningEvent.GetType().Name;
         }
 
-        protected virtual string CreateKey()
+        private string CreateKey()
         {
-            return $@"{JobId}-{Ukprn}-{CollectionPeriod.AcademicYear}-{CollectionPeriod.Period}-{Learner.Uln}-{Learner.ReferenceNumber}-{LearningAim.Reference}-{LearningAim.ProgrammeType}-{LearningAim.StandardCode}-{LearningAim.FrameworkCode}-{LearningAim.PathwayCode}-{LearningAim.FundingLineType}-{LearningAim.SequenceNumber}-{LearningAim.StartDate:G}-{EventType}";
+            return $@"{JobId}-{Ukprn}-{CollectionPeriod.AcademicYear}-{CollectionPeriod.Period}-
+                        {Learner.Uln}-{Learner.ReferenceNumber}-{LearningAim.Reference}-
+                        {LearningAim.ProgrammeType}-{LearningAim.StandardCode}-{LearningAim.FrameworkCode}-
+                        {LearningAim.PathwayCode}-{LearningAim.FundingLineType}-{LearningAim.SequenceNumber}-
+                        {LearningAim.StartDate:G}-{GetType().Name}";
         }
 
-        protected virtual string CreateLogSafeKey()
+        private string CreateLogSafeKey()
         {
-            return $@"{JobId}-{CollectionPeriod.AcademicYear}-{CollectionPeriod.Period}-{Learner.ReferenceNumber}-{LearningAim.Reference}-{LearningAim.ProgrammeType}-{LearningAim.StandardCode}-{LearningAim.FrameworkCode}-{LearningAim.PathwayCode}-{LearningAim.FundingLineType}-{LearningAim.SequenceNumber}-{LearningAim.StartDate:G}-{EventType}";
+            return $@"{JobId}-{CollectionPeriod.AcademicYear}-{CollectionPeriod.Period}-
+                        {Learner.ReferenceNumber}-{LearningAim.Reference}-
+                        {LearningAim.ProgrammeType}-{LearningAim.StandardCode}-{LearningAim.FrameworkCode}-
+                        {LearningAim.PathwayCode}-{LearningAim.FundingLineType}-{LearningAim.SequenceNumber}-
+                        {LearningAim.StartDate:G}-{GetType().Name}";
         }
     }
 }
