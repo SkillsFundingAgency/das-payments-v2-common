@@ -6,24 +6,25 @@ using SFA.DAS.Payments.Model.Core.Audit;
 namespace SFA.DAS.Payments.Application.Data.Configurations
 {
     [Obsolete("Replaced with configuration class in audit domain")]
-    public class DataLockEventNonPayablePeriodModelConfiguration : IEntityTypeConfiguration<DataLockEventNonPayablePeriodModel>
+    public class DataLockEventPayablePeriodModelConfiguration : IEntityTypeConfiguration<DataLockEventPayablePeriodModel>
     {
-        public void Configure(EntityTypeBuilder<DataLockEventNonPayablePeriodModel> builder)
+        public void Configure(EntityTypeBuilder<DataLockEventPayablePeriodModel> builder)
         {
-            builder.ToTable("DataLockEventNonPayablePeriod", "Payments2");
+            builder.ToTable("DataLockEventPayablePeriod", "Payments2");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName(@"Id").IsRequired();
             builder.Property(x => x.DataLockEventId).HasColumnName(@"DataLockEventId").IsRequired();
-            builder.Property(x => x.DataLockEventNonPayablePeriodId).HasColumnName(@"DataLockEventNonPayablePeriodId").IsRequired();
             builder.Property(x => x.PriceEpisodeIdentifier).HasColumnName(@"PriceEpisodeIdentifier");
             builder.Property(x => x.TransactionType).HasColumnName(@"TransactionType").IsRequired();
             builder.Property(x => x.DeliveryPeriod).HasColumnName(@"DeliveryPeriod").IsRequired();
             builder.Property(x => x.Amount).HasColumnName(@"Amount").IsRequired();
             builder.Property(x => x.SfaContributionPercentage).HasColumnName(@"SfaContributionPercentage");
-            builder.Property(x => x.CensusDate).HasColumnName(@"CensusDate");
             builder.Property(x => x.LearningStartDate).HasColumnName(@"LearningStartDate");
 
-            builder.HasOne(x => x.DataLockEvent).WithMany(dl => dl.NonPayablePeriods).HasForeignKey(x => x.DataLockEventId);
+            builder.HasOne(pp => pp.DataLockEvent)
+                .WithMany(dle => dle.PayablePeriods)
+                .HasPrincipalKey(dle => dle.EventId)
+                .HasForeignKey(pp => pp.DataLockEventId);
         }
     }
 }
