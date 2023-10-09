@@ -1,0 +1,19 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SFA.DAS.Payments.Common.Model.Core.Entities;
+
+namespace SFA.DAS.Payments.Common.Application.Data.Configurations
+{
+    public class ApprenticeshipDuplicateModelConfiguration : IEntityTypeConfiguration<ApprenticeshipDuplicateModel>
+    {
+        public void Configure(EntityTypeBuilder<ApprenticeshipDuplicateModel> builder)
+        {
+            builder.ToTable("ApprenticeshipDuplicate", "Payments2");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName(@"Id").IsRequired();
+            builder.Property(x => x.ApprenticeshipId).HasColumnName(@"ApprenticeshipId").IsRequired();
+            builder.Property(x => x.Uln).HasColumnName(@"Uln").IsRequired();
+            builder.Property(x => x.Ukprn).HasColumnName(@"Ukprn").IsRequired();
+        }
+    }
+}
