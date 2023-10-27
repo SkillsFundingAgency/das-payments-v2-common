@@ -37,7 +37,7 @@ resources:
 stages:
 - stage: Build
   jobs:
-  - template: pipeline-templates/job/code-build.yml
+  - template: /pipeline-templates/job/code-build.yml
     parameters:
       WorkingDirectory: SFA.DAS.Payments.Application
       DotNetFrameworkPackagesToPack: SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj
