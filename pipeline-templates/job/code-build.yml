@@ -17,7 +17,7 @@ jobs:
     displayName: "Restore command"
     inputs:
       command: 'restore'
-      restoreSolution: 'src/SFA.DAS.Payments.Common.sln'
+      restoreSolution: '/src/SFA.DAS.Payments.Common.sln'
 
   - task: DotNetCoreCLI@2
     displayName: "Publish $(SolutionBaseName)"
