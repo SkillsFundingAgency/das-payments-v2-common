@@ -1,5 +1,5 @@
 parameters:
-  ConfigFilePath: GitVersion.yml
+  ConfigFilePath: gitversion.yml
 
 steps:
 - task: gitversion/setup@0
