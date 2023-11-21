@@ -2,45 +2,24 @@ trigger:
   batch: true
   branches:
     include:
-      - "master"
-  paths:
-    include:
-    - pipeline-templates
-    - SFA.DAS.Payments.Application
-    - SFA.DAS.Payments.Core
-    - SFA.DAS.Payments.Messages.Core
-    - SFA.DAS.Payments.Messaging
-    - SFA.DAS.Payments.Model.Core
-pr:
-  autoCancel: true
-  branches:
-    include:
-      - "master"
-  paths:
-    include:
-    - pipeline-templates
-    - SFA.DAS.Payments.Application
-    - SFA.DAS.Payments.Core
-    - SFA.DAS.Payments.Messages.Core
-    - SFA.DAS.Payments.Messaging
-    - SFA.DAS.Payments.Model.Core
+      - "main"
+
+variables:
+- name: BuildPlatform
+  value : 'any cpu'
+- name: BuildConfiguration
+  value: 'release'
 
 resources:
   repositories:
-  - repository: self
-  - repository: das-platform-building-blocks
-    type: github
-    name: SkillsFundingAgency/das-platform-building-blocks
-    ref: refs/tags/0.4.64
-    endpoint: SkillsFundingAgency
+    - repository: das-payments-v2-common
+      type: github
+      name: SkillsFundingAgency/das-payments-v2-common
+      ref: refs/tags/2.1.0
+      endpoint: SkillsFundingAgency
 
 stages:
 - stage: Build
   jobs:
-  - template: /pipeline-templates/job/code-build.yml
-    parameters:
-      WorkingDirectory: SFA.DAS.Payments.Application
-      DotNetFrameworkPackagesToPack: SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj
-      SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
-      SdkStyleFrameworkProjects: true
-- template: azure-pipelines-templates/deploy/stage/nuget-publish.yml@das-platform-building-blocks
+  - template: pipeline-templates/job/code-build.yml
+- template: azure-pipelines-templates/deploy/stage/nuget-publish.yml

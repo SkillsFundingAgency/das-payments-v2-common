@@ -1,87 +1,43 @@
-parameters:
-  WorkingDirectory:
-  DotNetStandardPackagesToPack: ''
-  DotNetFrameworkPackagesToPack: ''
-  SdkStyleFrameworkProjects: false
-  SonarCloudProjectKey:
-
 jobs:
-- ${{ if ne(parameters.DotNetFrameworkPackagesToPack, '') }}:
-  - job: VSCodeBuild
-    pool:
-      name: DAS - Continuous Integration
-    variables:
-    - group: BUILD Management Resources
-    - name: buildConfiguration
-      value: Release
-    - name: buildPlatform
-      value: Any CPU
-    steps:
-      - template: azure-pipelines-templates/build/step/gitversion.yml@das-platform-building-blocks
-        parameters:
-          ConfigFilePath: ${{ parameters.WorkingDirectory }}/GitVersion.yml
-      - task: SonarCloudPrepare@1
-        displayName: Prepare SonarCloud analysis configuration
-        condition: and(succeeded(), or(in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/main'), eq(variables['Build.Reason'], 'PullRequest')))
-        inputs:
-          SonarCloud: ESFA - SonarCloud
-          organization: $(SonarCloudOrganisationKey)
-          scannerMode: MSBuild
-          projectName: "$(Build.DefinitionName)"
-          projectKey: ${{ parameters.SonarCloudProjectKey }}
-      - task: NuGetToolInstaller@0
-        displayName: 'Use NuGet 5.x'
-        inputs:
-          versionSpec: 5.x
-      - task: NuGetCommand@2
-        displayName: 'NuGet restore'
-        inputs:
-          restoreSolution: ${{ parameters.WorkingDirectory }}/**/*.sln
-      - task: VSBuild@1
-        displayName: 'Build Solution'
-        inputs:
-          solution: ${{ parameters.WorkingDirectory }}/**/*.sln
-          platform: '$(buildPlatform)'
-          configuration: '$(buildConfiguration)'
-          clean: true
-          vsVersion: '16.0'
-      - task: VSTest@2
-        displayName: 'Run NUnit Tests'
-        inputs:
-          testAssemblyVer2: ${{parameters.WorkingDirectory }}/**/bin/$(buildConfiguration)/*UnitTests.dll
-          platform: '$(buildPlatform)'
-          configuration: '$(buildConfiguration)'
-      - task: SonarCloudAnalyze@1
-        displayName: Run SonarCloud analysis
-        condition: and(succeeded(), or(in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/main'), eq(variables['Build.Reason'], 'PullRequest')))
-      - task: SonarCloudPublish@1
-        displayName: Publish SonarCloud analysis results on build summary
-        condition: and(succeeded(), or(in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/main'), eq(variables['Build.Reason'], 'PullRequest')))
-        inputs:
-          pollingTimeoutSec: '300'
-      - template: azure-pipelines-templates/build/step/nuget-pack.yml@das-platform-building-blocks
-        parameters:
-          ${{ if eq(parameters.SdkStyleFrameworkProjects, true) }}:
-            DotNetStandardPackagesToPack: ${{ parameters.DotNetFrameworkPackagesToPack }}
-          ${{ else }}:
-            DotNetFrameworkPackagesToPack: ${{ parameters.DotNetFrameworkPackagesToPack }}
-- ${{ elseif ne(parameters.DotNetStandardPackagesToPack, '') }}:
-  - job: CliCodeBuild
-    pool:
-      name: DAS - Continuous Integration Agents
-    variables:
-    - group: BUILD Management Resources
-    - name: buildConfiguration
-      value: release
-    steps:
-      - template: azure-pipelines-templates/build/step/gitversion.yml@das-platform-building-blocks
-        parameters:
-          ConfigFilePath: ${{ parameters.WorkingDirectory }}/GitVersion.yml
-      - template: azure-pipelines-templates/build/step/app-build.yml@das-platform-building-blocks
-        parameters:
-          SonarCloudProjectKey: ${{ parameters.SonarCloudProjectKey }}
-          TargetProjects: ${{ parameters.WorkingDirectory }}/**/*.csproj
-          UnitTestProjects: ${{parameters.WorkingDirectory }}/**/*UnitTests.csproj
-      - template: azure-pipelines-templates/build/step/nuget-pack.yml@das-platform-building-blocks
-        parameters:
-          DotNetStandardPackagesToPack: ${{ parameters.DotNetStandardPackagesToPack }}
+- job: CodeBuild
+  pool:
+    name: DCT Build Pool
+    demands: LATEST_DOTNET_VERSION -equals 3.1
+  variables:
+  - group: BUILD Management Resources
+  - name: SolutionBaseName
+    value: SFA.DAS.Payments.Application
+  steps:
+  - template: azure-pipelines-templates/build/step/gitversion.yml
+
+  - template: azure-pipelines-templates/build/step/app-build.yml
+    parameters:
+      SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
+
+  - task: DotNetCoreCLI@2
+    displayName: "Publish $(SolutionBaseName)"
+    inputs:
+      command: publish
+      publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
+      projects: src/$(SolutionBaseName)/$(SolutionBaseName).csproj
+      arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-build"
+      modifyOutputPath: true
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)/publish'
+    inputs:
+      Contents: |
+       /**
+      TargetFolder: '$(build.artifactstagingdirectory)/publish'
+      OverWrite: true
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      targetPath: $(build.artifactstagingdirectory)/publish
+      artifactName: drop
+
+  - template: azure-pipelines-templates/build/step/nuget-pack.yml
+    parameters:
+      DotNetStandardPackagesToPack: |
+        src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj;
