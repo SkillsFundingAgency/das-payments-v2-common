@@ -13,11 +13,11 @@ jobs:
   #- template: /azure-pipelines-templates/build/step/app-build.yml
   #  parameters:
   #    SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
-  - task: NuGetCommand@2
-    displayName: "Restore Nuget command"
+  - task: DotNetCoreCLI@2
+    displayName: "Restore command"
     inputs:
       command: 'restore'
-      restoreSolution: '**/*.sln'
+      restoreSolution: 'src/SFA.DAS.Payments.Common.sln'
 
   - task: DotNetCoreCLI@2
     displayName: "Publish $(SolutionBaseName)"
