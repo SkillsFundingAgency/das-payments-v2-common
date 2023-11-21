@@ -25,4 +25,4 @@ stages:
               command: push
               packagesToPush: '$(Pipeline.Workspace)/NuGetPackages/*.nupkg;!$(Pipeline.Workspace)/NuGetPackages/*.symbols.nupkg'
               nuGetFeedType: external
-              publishFeedCredentials: 'SFA NuGet'
+              publishFeedCredentials: 'DCOL NuGet'
