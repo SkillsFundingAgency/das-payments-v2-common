@@ -10,9 +10,9 @@ jobs:
   steps:
   - template: /azure-pipelines-templates/build/step/gitversion.yml
 
-  - template: /azure-pipelines-templates/build/step/app-build.yml
-    parameters:
-      SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
+  #- template: /azure-pipelines-templates/build/step/app-build.yml
+  #  parameters:
+  #    SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
 
   - task: DotNetCoreCLI@2
     displayName: "Publish $(SolutionBaseName)"
