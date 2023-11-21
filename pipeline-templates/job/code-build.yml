@@ -14,9 +14,10 @@ jobs:
   #  parameters:
   #    SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
   - task: NuGetCommand@2
+    displayName: "Restore Nuget command"
     inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
+      command: 'restore'
+      restoreSolution: '**/*.sln'
 
   - task: DotNetCoreCLI@2
     displayName: "Publish $(SolutionBaseName)"
