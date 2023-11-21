@@ -8,9 +8,9 @@ jobs:
   - name: SolutionBaseName
     value: SFA.DAS.Payments.Application
   steps:
-  - template: azure-pipelines-templates/build/step/gitversion.yml
+  - template: /azure-pipelines-templates/build/step/gitversion.yml
 
-  - template: azure-pipelines-templates/build/step/app-build.yml
+  - template: /azure-pipelines-templates/build/step/app-build.yml
     parameters:
       SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
 
@@ -37,7 +37,7 @@ jobs:
       targetPath: $(build.artifactstagingdirectory)/publish
       artifactName: drop
 
-  - template: azure-pipelines-templates/build/step/nuget-pack.yml
+  - template: /azure-pipelines-templates/build/step/nuget-pack.yml
     parameters:
       DotNetStandardPackagesToPack: |
         src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj;
