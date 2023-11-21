@@ -15,7 +15,6 @@ resources:
     - repository: das-payments-v2-common
       type: github
       name: SkillsFundingAgency/das-payments-v2-common
-      ref: refs/tags/2.1.0
       endpoint: SkillsFundingAgency
 
 stages:
