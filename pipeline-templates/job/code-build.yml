@@ -1,3 +1,5 @@
+parameters:
+  TargetProjects: 'src/**/*.csproj'
 jobs:
 - job: CodeBuild
   pool:
@@ -13,20 +15,22 @@ jobs:
   #- template: /azure-pipelines-templates/build/step/app-build.yml
   #  parameters:
   #    SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
+
   - task: DotNetCoreCLI@2
-    displayName: "Restore command"
+    displayName: Restore
     inputs:
-      command: 'restore'
-      restoreSolution: '/src/SFA.DAS.Payments.Common.sln'
+      command: restore
+      projects: ${{ parameters.TargetProjects }}
+      noCache: true
 
   - task: DotNetCoreCLI@2
     displayName: "Publish $(SolutionBaseName)"
     inputs:
       command: publish
       publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
-      projects: 'src/$(SolutionBaseName)/$(SolutionBaseName).csproj'
+      projects: 'src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj'
       arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
-      modifyOutputPath: true
+      #modifyOutputPath: true
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)/publish'
