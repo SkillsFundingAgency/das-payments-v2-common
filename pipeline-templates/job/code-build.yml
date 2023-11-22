@@ -24,6 +24,12 @@ jobs:
       noCache: true
 
   - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      projects:  ${{ parameters.TargetProjects }}
+      arguments: '--configuration $(buildConfiguration) --no-restore'
+
+  - task: DotNetCoreCLI@2
     displayName: "Publish $(SolutionBaseName)"
     inputs:
       command: publish
