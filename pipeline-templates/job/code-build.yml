@@ -23,6 +23,8 @@ jobs:
       vstsFeed: dct-pkg
       projects: ${{ parameters.TargetProjects }}
       noCache: true
+      feedsToUse: 'select'
+      vstsFeed: 'dct-pkg'
     
   - task: DotNetCoreCLI@2
     displayName: Build
