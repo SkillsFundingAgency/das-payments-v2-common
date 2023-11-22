@@ -20,6 +20,7 @@ jobs:
     displayName: Restore
     inputs:
       command: restore
+      vstsFeed: dct-pkg
       projects: ${{ parameters.TargetProjects }}
       noCache: true
     
