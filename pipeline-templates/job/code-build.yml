@@ -17,7 +17,7 @@ jobs:
   #    SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
 
   #- task: DotNetCoreCLI@2
-   - task: NuGetCommand@2
+  - task: NuGetCommand@2
     displayName: Restore
     inputs:
       command: restore
