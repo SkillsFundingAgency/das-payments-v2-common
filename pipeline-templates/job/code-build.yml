@@ -3,7 +3,7 @@ parameters:
 jobs:
 - job: CodeBuild
   pool:
-    name: DCT Build Pool
+    name: DCT
     #demands: LATEST_DOTNET_VERSION
   variables:
   - group: BUILD Management Resources
