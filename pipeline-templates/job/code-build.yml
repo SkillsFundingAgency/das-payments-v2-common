@@ -25,7 +25,7 @@ jobs:
     
   - task: DotNetCoreCLI@2
     displayName: Build
-      inputs:
+    inputs:
       projects:  ${{ parameters.TargetProjects }}
       arguments: '--configuration $(buildConfiguration) --no-restore'
 
