@@ -37,7 +37,7 @@ jobs:
     inputs:
       command: publish
       publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
-      projects: ${{ parameters.TargetProjects }}
+      projects: src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj
       arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
       modifyOutputPath: true
 
