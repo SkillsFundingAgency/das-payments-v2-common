@@ -4,7 +4,7 @@ stages:
   condition: and(succeeded(), or(eq(variables['Build.Reason'], 'Manual'), eq(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/main')))
   displayName: Publish NuGet Package
   pool:
-    name: DCT Build Pool
+    name: SLD Build Pool
   jobs:
   - job: CleanArtifacts
     displayName: Clean artifacts directory
