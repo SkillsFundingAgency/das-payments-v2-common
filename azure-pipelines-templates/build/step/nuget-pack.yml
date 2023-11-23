@@ -4,7 +4,7 @@ parameters:
   DotNetFrameworkPackagesToPack: ''
   DotNetStandardPackagesToPack: ''
 
-#steps:
+steps:
 #- task: PowerShell@2
 #  displayName: 'Set NuGet Package Version'
 #  inputs:
