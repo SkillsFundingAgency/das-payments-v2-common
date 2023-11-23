@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>SFA.DAS.Payments.Core</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
