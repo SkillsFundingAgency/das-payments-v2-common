@@ -37,9 +37,9 @@ jobs:
     inputs:
       command: publish
       publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
-      projects: 'src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj'
+      projects: ${{ parameters.TargetProjects }}
       arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
-      #modifyOutputPath: true
+      modifyOutputPath: true
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)/publish'
@@ -59,3 +59,7 @@ jobs:
     parameters:
       DotNetStandardPackagesToPack: |
         src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj;
+        src/SFA.DAS.Payments.Core/SFA.DAS.Payments.Core.csproj;
+        src/SFA.DAS.Payments.Messages.Core/SFA.DAS.Payments.Messages.Core.csproj;
+        src/SFA.DAS.Payments.Messaging/SFA.DAS.Payments.Messaging.csproj;
+        src/SFA.DAS.Payments.Model.Core.UnitTests/SFA.DAS.Payments.Model.Core.UnitTests.csproj;
