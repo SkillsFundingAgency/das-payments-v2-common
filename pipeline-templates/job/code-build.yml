@@ -68,6 +68,15 @@ jobs:
       arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
       modifyOutputPath: true
 
+  - task: DotNetCoreCLI@2
+    displayName: "Publish SFA.DAS.Payments.Model.Core"
+    inputs:
+      command: publish
+      publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
+      projects: src/SFA.DAS.Payments.Model.Core/SFA.DAS.Payments.Model.Core.csproj
+      arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
+      modifyOutputPath: true
+
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)/publish'
     inputs:
@@ -89,4 +98,5 @@ jobs:
         src/SFA.DAS.Payments.Core/SFA.DAS.Payments.Core.csproj;
         src/SFA.DAS.Payments.Messages.Core/SFA.DAS.Payments.Messages.Core.csproj;
         src/SFA.DAS.Payments.Messaging/SFA.DAS.Payments.Messaging.csproj;
+        src/SFA.DAS.Payments.Messaging/SFA.DAS.Payments.Model.Core.csproj;
         
