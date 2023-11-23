@@ -24,7 +24,6 @@ stages:
             inputs:
               command: push
               packagesToPush: '$(Pipeline.Workspace)/NuGetPackages/*.nupkg;!$(Pipeline.Workspace)/NuGetPackages/*.symbols.nupkg'
-              arguments:
-                -SkipDuplicate
+              allowPackageConflicts: true
               nuGetFeedType: external
               publishFeedCredentials: 'Paymentsv2-Nuget'
