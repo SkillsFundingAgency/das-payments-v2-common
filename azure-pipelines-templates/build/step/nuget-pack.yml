@@ -28,12 +28,12 @@ steps:
   inputs:
     command: pack
     packagesToPack: ${{ parameters.DotNetStandardPackagesToPack }}
-    versioningScheme: byEnvVar
-    versionEnvVar: NuGetPackageVersion
-    #versioningScheme: byPrereleaseNumber
-    #majorVersion: 1
-    #minorVersion: 0
-    #patchVersion: 1
+    #versioningScheme: byEnvVar
+    #versionEnvVar: NuGetPackageVersion
+    versioningScheme: byPrereleaseNumber
+    majorVersion: 2
+    minorVersion: 1
+    patchVersion: 2
     packDestination: $(build.artifactstagingdirectory)/NuGetPackages
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: NuGetPackages'
