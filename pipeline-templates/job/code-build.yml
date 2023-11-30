@@ -56,7 +56,7 @@ jobs:
     inputs:
       command: publish
       publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
-      projects: src/SFA.DAS.Payments.Messages.Core/SFA.DAS.Payments.Messages.Core.csproj
+      projects: src/SFA.DAS.Payments.Messages.Core/SFA.DAS.Payments.Messages.Common.csproj
       arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
       modifyOutputPath: true
 
@@ -95,5 +95,9 @@ jobs:
   - template: /azure-pipelines-templates/build/step/nuget-pack.yml
     parameters:
       DotNetStandardPackagesToPack: |
-         src/SFA.DAS.Payments.Messages.Core/SFA.DAS.Payments.Messages.Core.csproj;
+         src/SFA.DAS.Payments.Messages.Core/SFA.DAS.Payments.Messages.Common.csproj;
+         src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj;
+         src/SFA.DAS.Payments.Core/SFA.DAS.Payments.Core.csproj;
+         src/SFA.DAS.Payments.Messaging/SFA.DAS.Payments.Messaging.csproj;
+         src/SFA.DAS.Payments.Model.Core/SFA.DAS.Payments.Model.Core.csproj;
         
