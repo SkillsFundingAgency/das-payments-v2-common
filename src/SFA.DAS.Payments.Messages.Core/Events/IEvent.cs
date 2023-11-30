@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SFA.DAS.Payments.Messages.Core.Events
+namespace SFA.DAS.Payments.Messages.Common.Events
 {
     public interface IEvent: IPaymentsMessage
     {

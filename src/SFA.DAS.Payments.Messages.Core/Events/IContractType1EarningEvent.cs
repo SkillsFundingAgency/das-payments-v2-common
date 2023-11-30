@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.Payments.Messages.Core.Events
+﻿namespace SFA.DAS.Payments.Messages.Common.Events
 {
     public interface IContractType1EarningEvent : IContractTypeEarningEvent
     {

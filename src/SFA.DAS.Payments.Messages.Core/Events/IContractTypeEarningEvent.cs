@@ -2,7 +2,7 @@
 using SFA.DAS.Payments.Model.Core.Incentives;
 using SFA.DAS.Payments.Model.Core.OnProgramme;
 
-namespace SFA.DAS.Payments.Messages.Core.Events
+namespace SFA.DAS.Payments.Messages.Common.Events
 {
     public interface IContractTypeEarningEvent : IEarningEvent
     {

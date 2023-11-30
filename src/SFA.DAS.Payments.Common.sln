@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Applicatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Core", "SFA.DAS.Payments.Core\SFA.DAS.Payments.Core.csproj", "{A6E17B10-11D7-4C6C-B36F-61E8AA21FFBC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Messages.Core", "SFA.DAS.Payments.Messages.Core\SFA.DAS.Payments.Messages.Core.csproj", "{5B14D4D7-6F98-4D54-B9D8-8F492FE19923}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Messages.Common", "SFA.DAS.Payments.Messages.Core\SFA.DAS.Payments.Messages.Common.csproj", "{5B14D4D7-6F98-4D54-B9D8-8F492FE19923}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Messaging", "SFA.DAS.Payments.Messaging\SFA.DAS.Payments.Messaging.csproj", "{39AD10D9-FC51-4EBB-8249-354F70ACED21}"
 EndProject

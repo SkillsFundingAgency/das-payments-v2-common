@@ -34,7 +34,7 @@ namespace SFA.DAS.Payments.Application.Infrastructure.Ioc.Modules
                 var conventions = endpointConfiguration.Conventions();
                 conventions.DefiningMessagesAs(type => (type.Namespace?.StartsWith("SFA.DAS.Payments") ?? false) && (type.Namespace?.Contains(".Messages") ?? false));
                 conventions.DefiningCommandsAs(type => (type.Namespace?.StartsWith("SFA.DAS.Payments") ?? false) && (type.Namespace?.Contains(".Messages.Commands") ?? false));
-                conventions.DefiningEventsAs(type => (type.Namespace?.StartsWith("SFA.DAS.Payments") ?? false) && ((type.Namespace?.Contains(".Messages.Events") ?? false) || (type.Namespace?.Contains(".Messages.Core") ?? false)));
+                conventions.DefiningEventsAs(type => (type.Namespace?.StartsWith("SFA.DAS.Payments") ?? false) && ((type.Namespace?.Contains(".Messages.Events") ?? false) || (type.Namespace?.Contains(".Messages.Common") ?? false)));
 
                 var persistence = endpointConfiguration.UsePersistence<AzureStoragePersistence>();
                 persistence.ConnectionString(config.StorageConnectionString);
