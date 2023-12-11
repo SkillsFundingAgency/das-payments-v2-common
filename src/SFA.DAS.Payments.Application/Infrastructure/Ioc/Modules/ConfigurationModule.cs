@@ -1,6 +1,5 @@
 ﻿using System;
 using Autofac;
-using ESFA.DC.Logging.Enums;
 using SFA.DAS.Payments.Application.Infrastructure.Configuration;
 using SFA.DAS.Payments.Core.Configuration;
 

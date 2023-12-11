@@ -1,14 +1,11 @@
-using System;
 using System.Linq;
 using System.Net;
-using System.Web;
 using Autofac;
 using NServiceBus;
 using NServiceBus.Features;
 using NServiceBus.Logging;
 using SFA.DAS.Payments.Application.Infrastructure.Logging;
 using SFA.DAS.Payments.Application.Messaging;
-using SFA.DAS.Payments.Application.Messaging.Telemetry;
 using SFA.DAS.Payments.Core.Configuration;
 
 namespace SFA.DAS.Payments.Application.Infrastructure.Ioc.Modules
