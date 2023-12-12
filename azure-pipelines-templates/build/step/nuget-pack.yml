@@ -13,15 +13,15 @@ steps:
       if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "$(GitVersion.MajorMinorPatch)-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "$(GitVersion.MajorMinorPatch)" }
       Write-Host "NuGetPackageVersion: $NuGetPackageVersion"
       Write-Host "##vso[task.setvariable variable=NuGetPackageVersion]$NuGetPackageVersion"
-#- task: DotNetCoreCLI@2
-#  condition: ne('${{ parameters.DotNetStandardPackagesToPack }}', '')
-#  displayName: 'dotnet pack'
-#  inputs:
-#    command: pack
-#    packagesToPack: ${{ parameters.DotNetStandardPackagesToPack }}
-#    versioningScheme: byEnvVar
-#    versionEnvVar: NuGetPackageVersion
-#    packDirectory: $(build.artifactstagingdirectory)/NuGetPackages
+- task: DotNetCoreCLI@2
+  condition: ne('${{ parameters.DotNetStandardPackagesToPack }}', '')
+  displayName: 'dotnet pack'
+  inputs:
+    command: pack
+    packagesToPack: ${{ parameters.DotNetStandardPackagesToPack }}
+    versioningScheme: byEnvVar
+    versionEnvVar: NuGetPackageVersion
+    packDirectory: $(build.artifactstagingdirectory)/NuGetPackages
 - task: NuGetCommand@2
   condition: ne('${{ parameters.DotNetStandardPackagesToPack }}', '')
   displayName: 'NuGet pack'
