@@ -43,7 +43,7 @@ jobs:
     displayName: Build
     inputs:
       projects:  ${{ parameters.TargetProjects }}
-      arguments: '--configuration $(buildConfiguration) --no-restore --t:pack'
+      arguments: '--configuration $(buildConfiguration) --no-restore'
 
   - task: DotNetCoreCLI@2
     displayName: "Publish $(SolutionBaseName)"
