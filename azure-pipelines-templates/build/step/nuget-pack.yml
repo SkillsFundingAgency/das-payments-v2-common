@@ -22,19 +22,19 @@ steps:
     versioningScheme: byEnvVar
     versionEnvVar: NuGetPackageVersion
     packDirectory: $(build.artifactstagingdirectory)/NuGetPackages
-- task: NuGetCommand@2
-  condition: ne('${{ parameters.DotNetStandardPackagesToPack }}', '')
-  displayName: 'NuGet pack'
-  inputs:
-    command: pack
-    packagesToPack: ${{ parameters.DotNetStandardPackagesToPack }}
-    versioningScheme: byEnvVar
-    versionEnvVar: NuGetPackageVersion
+#- task: NuGetCommand@2
+#  condition: ne('${{ parameters.DotNetStandardPackagesToPack }}', '')
+#  displayName: 'NuGet pack'
+#  inputs:
+#    command: pack
+#    packagesToPack: ${{ parameters.DotNetStandardPackagesToPack }}
+#    versioningScheme: byEnvVar
+#    versionEnvVar: NuGetPackageVersion
     #versioningScheme: byPrereleaseNumber
     #majorVersion: 2
     #minorVersion: 1
     #patchVersion: 2
-    packDestination: $(build.artifactstagingdirectory)/NuGetPackages
+#    packDestination: $(build.artifactstagingdirectory)/NuGetPackages
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: NuGetPackages'
   inputs:
