@@ -16,15 +16,15 @@ jobs:
   #  parameters:
   #    SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
 
-  #- task: DotNetCoreCLI@2
-  - task: NuGetCommand@2
+  - task: DotNetCoreCLI@2
+  # task: NuGetCommand@2
     displayName: Restore
     inputs:
       command: restore
       projects: ${{ parameters.TargetProjects }}
       noCache: true
-      feedsToUse: 'select'
-      vstsFeed: 'dct-pkg'
+    #  feedsToUse: 'select'
+    #  vstsFeed: 'dct-pkg'
     #  vstsFeed: '1d5deb2d-cf8b-4bb1-b147-d13bc246e3f4'
     
   - task: DotNetCoreCLI@2
