@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using SFA.DAS.Payments.Application.Infrastructure.UnitOfWork;
+﻿using SFA.DAS.Payments.Application.Infrastructure.UnitOfWork;
 
 namespace SFA.DAS.Payments.Application.Batch
 {
