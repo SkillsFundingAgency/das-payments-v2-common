@@ -155,11 +155,3 @@ _For Example_
 ```
 
 ## 🐛 Known Issues
-
-_Add any known issues with the project_
-
-_For Example_
-
-```
-* Fails when built under VS2019
-```
