@@ -1,5 +1,10 @@
 ﻿# this template depends on GitVersion being implemented earlier in the pipeline using Mainline mode
 # this template should be placed at the end of a code-build stage or in a separate stage to prevent the publish task breaking the pipeline in the event that it needs to be reran
+
+  variables:
+  - name: counterVar
+    value: 1
+
 parameters:
   DotNetFrameworkPackagesToPack: ''
   DotNetStandardPackagesToPack: ''
@@ -7,13 +12,7 @@ parameters:
   Minor:
   - name: Revision
     type: number
-    default: $[counter(variables['counterVar'], 1)]
-
-  variables:
-  - name: counterVar
-    value: 1
-    
-    
+    default: $[counter(variables['counterVar'], 1)] 
  
 steps:
 - task: PowerShell@2
@@ -22,6 +21,7 @@ steps:
     targetType: inline
     script: |
       Write-Host "Major value is: ${{ parameters.Major }}"
+      Write-Host "Minor value is: ${{ parameters.Minor }}"
       Write-Host "Minor value is: ${{ parameters.Minor }}"
       if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "${{ parameters.Major }}.${{ parameters.Minor }}.${{ parameters.Revision }}-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "${{ parameters.Major }}.${{ parameters.Minor }}.${{ parameters.Revision }}"}
       Write-Host "NuGetPackageVersion: $NuGetPackageVersion"
