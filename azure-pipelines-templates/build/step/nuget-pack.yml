@@ -14,8 +14,7 @@ parameters:
     - name: nugetVersion
       value: '$(major).$(minor).$(revision)'
     
-    revision: $[counter(variables['minor'], 1)] # This will get reset every time minor gets bumped.
-    nugetVersion: '$(major).$(minor).$(revision)'
+    
  
 steps:
 - task: PowerShell@2
