@@ -4,15 +4,15 @@ parameters:
   DotNetFrameworkPackagesToPack: ''
   DotNetStandardPackagesToPack: ''
 
-variables:
-- name: major
-  value: "1" 
-- name: minor
-  value: "2"
-- name: revision
-  value: $[counter(variables['minor'], 0)] # This will get reset every time minor gets bumped.
-- name: setversion
-  value: '$(major).$(minor).$(revision)'
+  variables:
+  - name: major
+    value: "1" 
+  - name: minor
+    value: "2"
+  - name: revision
+    value: $[counter(variables['minor'], 0)] # This will get reset every time minor gets bumped.
+  - name: setversion
+    value: '$(major).$(minor).$(revision)'
     
     
  
