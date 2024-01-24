@@ -4,15 +4,15 @@ parameters:
   DotNetFrameworkPackagesToPack: ''
   DotNetStandardPackagesToPack: ''
 
-  variables:
-    - name: major
-      value: "1" 
-    - name: minor
-      value: "0"
-    - name: revision
-      value: $[counter(variables['minor'], 1)] # This will get reset every time minor gets bumped.
-    - name: setversion
-      value: '$(major).$(minor).$(revision)'
+variables:
+  - name: major
+    value: "1" 
+  - name: minor
+    value: "2"
+  - name: revision
+    value: $[counter(variables['minor'], 0)] # This will get reset every time minor gets bumped.
+  - name: setversion
+    value: '$(major).$(minor).$(revision)'
     
     
  
@@ -22,15 +22,15 @@ steps:
   inputs:
     targetType: inline
     script: |
-      Write-Host "VMajor value is: $env:major"
-      Write-Host "SetVersion value is: $env:setversion"
-      Write-Host "Minor value is: $env:minor"
-      if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "${{ variables.setversion }}-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "${{ variables.setversion}}"}
+      Write-Host "VMajor value is: $(major)"
+      Write-Host "SetVersion value is: $(setversion)"
+      Write-Host "Minor value is: $(minor)"
+      if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "$(setversion)-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "$(setversion)"}
       Write-Host "NuGetPackageVersion: $NuGetPackageVersion"
       Write-Host "##vso[task.setvariable variable=NuGetPackageVersion]$NuGetPackageVersion"
-      Write-Host "VMajor value is: $env:major"
-      Write-Host "SetVersion value is: $env:setversion"
-      Write-Host "Minor value is: $env:minor"
+      Write-Host "VMajor value is: $(major)"
+      Write-Host "SetVersion value is: $(setversion)"
+      Write-Host "Minor value is: $(minor)"
 
 - task: DotNetCoreCLI@2
   condition: ne('${{ parameters.DotNetStandardPackagesToPack }}', '')
