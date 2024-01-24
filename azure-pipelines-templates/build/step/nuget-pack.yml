@@ -5,9 +5,9 @@ parameters:
   DotNetStandardPackagesToPack: ''
   Major:
   Minor:
-- name: Revision
-  type: number
-  default: $[counter(variables['counterVar'], 1)]
+  - name: Revision
+    type: number
+    default: $[counter(variables['counterVar'], 1)]
 
 variables:
 - name: counterVar
