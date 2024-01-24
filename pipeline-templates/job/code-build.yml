@@ -9,6 +9,10 @@ jobs:
   - group: BUILD Management Resources
   - name: SolutionBaseName
     value: SFA.DAS.Payments.Application
+  - name: patch
+    value: 0
+  - name: counterVar
+    value: $[counter(variables['patch'], 1)]
   steps:
   - template: /azure-pipelines-templates/build/step/gitversion.yml
 
@@ -108,6 +112,7 @@ jobs:
     parameters:
       Major: 1
       Minor: 0  
+      Revision: ${{ variables.counterVar }}
       DotNetStandardPackagesToPack: |
          src/SFA.DAS.Payments.Messages.Common/SFA.DAS.Payments.Messages.Common.csproj;
          src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj;
