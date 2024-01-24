@@ -8,13 +8,11 @@ parameters:
   Minor:
   Revision: $[counter(variables['counterVar'], 1)] 
 
-stages:
-- stage: Build
-  jobs:
-  - job: BuildJob
-    variables:
-    - name: counterVar
-      value: 1
+jobs:
+- job: BuildJob
+  variables:
+  - name: counterVar
+    value: 1
  
 steps:
 - task: PowerShell@2
