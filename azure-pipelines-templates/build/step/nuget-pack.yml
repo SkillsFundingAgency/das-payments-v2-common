@@ -8,16 +8,9 @@ parameters:
   Minor:
   Revision: $[counter(variables['counterVar'], 1)] 
 
-steps:
-- script: echo "Initialize counterVar"
-  displayName: 'Initialize Counter'
-  env:
-    counterVar: 1
-
-- job: BuildJob
-  displayName: 'Build Job'
   variables:
-    counterVar: $[counter(variables['counterVar'], 1)]
+  - name: counterVar
+    value: 1
  
 steps:
 - task: PowerShell@2
