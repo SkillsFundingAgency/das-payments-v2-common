@@ -6,9 +6,7 @@ parameters:
   Major:
   Minor:
   Revision: 0
-  #setrevision: 1.0.0
-  #  Revision: $[counter(${{ parameters.Minor }}, 0)]
-  #setrevision: "${{ parameters.Major }}"."${{ parameters.Minor }}"."${{ parameters.Revision }}"  
+    
     
  
 steps:
@@ -17,15 +15,12 @@ steps:
   inputs:
     targetType: inline
     script: |
-      Write-Host "VMajor value is: ${{ parameters.Major }}"
+      Write-Host "Major value is: ${{ parameters.Major }}"
       Write-Host "Minor value is: ${{ parameters.Minor }}"
-      Write-Host "SetVersion value is: ${{ parameters.setrevision }}"
       if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "${{ parameters.Major }}"."${{ parameters.Minor }}"."${{ parameters.Revision }}""-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "${{ parameters.Major }}"."${{ parameters.Minor }}"."${{ parameters.Revision }}"}
       Write-Host "NuGetPackageVersion: $NuGetPackageVersion"
       Write-Host "##vso[task.setvariable variable=NuGetPackageVersion]$NuGetPackageVersion"
-      Write-Host "VMajor value is: $(major)"
-      Write-Host "SetVersion value is: ${{ parameters.setrevision }}"
-      Write-Host "Minor value is: $(minor)"
+      
 
 - task: DotNetCoreCLI@2
   condition: ne('${{ parameters.DotNetStandardPackagesToPack }}', '')
@@ -36,6 +31,7 @@ steps:
     versioningScheme: byEnvVar
     versionEnvVar: NuGetPackageVersion
     packDirectory: $(build.artifactstagingdirectory)/NuGetPackages
+    
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: NuGetPackages'
   inputs:
