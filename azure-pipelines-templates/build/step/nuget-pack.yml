@@ -20,7 +20,7 @@ steps:
       Write-Host "VMajor value is: ${{ parameters.Major }}"
       Write-Host "Minor value is: ${{ parameters.Minor }}"
       Write-Host "SetVersion value is: ${{ parameters.setrevision }}"
-      if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "${{ parameters.Major }}"."${{ parameters.Minor }}"."${{ parameters.Revision }}"-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "${{ parameters.Major }}"."${{ parameters.Minor }}"."${{ parameters.Revision }}"}
+      if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "${{ parameters.Major }}"."${{ parameters.Minor }}"."${{ parameters.Revision }}""-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "${{ parameters.Major }}"."${{ parameters.Minor }}"."${{ parameters.Revision }}"}
       Write-Host "NuGetPackageVersion: $NuGetPackageVersion"
       Write-Host "##vso[task.setvariable variable=NuGetPackageVersion]$NuGetPackageVersion"
       Write-Host "VMajor value is: $(major)"
