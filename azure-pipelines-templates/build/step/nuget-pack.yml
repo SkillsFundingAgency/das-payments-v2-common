@@ -22,12 +22,11 @@ steps:
   inputs:
     targetType: inline
     script: |
-#      if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "$(GitVersion.MajorMinorPatch)-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "$(GitVersion.MajorMinorPatch)" }
-      if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "$(GitVersion.MajorMinorPatch)-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = $(variables.nugetVersion) }
+      if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "$(GitVersion.MajorMinorPatch)-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "$(variables.nugetVersion)" }
       Write-Host "NuGetPackageVersion: $NuGetPackageVersion"
       Write-Host "##vso[task.setvariable variable=NuGetPackageVersion]$NuGetPackageVersion"
 
- - task: DotNetCoreCLI@2
+- task: DotNetCoreCLI@2
   condition: ne('${{ parameters.DotNetStandardPackagesToPack }}', '')
   displayName: 'dotnet pack'
   inputs:
