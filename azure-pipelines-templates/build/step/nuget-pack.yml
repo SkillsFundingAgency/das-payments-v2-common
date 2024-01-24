@@ -22,7 +22,7 @@ steps:
   inputs:
     targetType: inline
     script: |
-      if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = $env:nugetVersion"-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = $env:nugetVersion) }
+      if ("$(GitVersion.PreReleaseLabel)" -ne "") { $NuGetPackageVersion = "$env:nugetVersion""-prerelease-$(PreReleaseNumber)" } else { $NuGetPackageVersion = "$env:nugetVersion" }
       Write-Host "NuGetPackageVersion: $NuGetPackageVersion"
       Write-Host "##vso[task.setvariable variable=NuGetPackageVersion]$NuGetPackageVersion"
 
