@@ -9,9 +9,9 @@ parameters:
     type: number
     default: $[counter(variables['counterVar'], 1)]
 
-variables:
-- name: counterVar
-  value: 1
+  variables:
+  - name: counterVar
+    value: 1
     
     
  
