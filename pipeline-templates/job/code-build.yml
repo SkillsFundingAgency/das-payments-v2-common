@@ -112,7 +112,7 @@ jobs:
     parameters:
       Major: 1
       Minor: 0  
-      Revision: ${{ variables.counterVar }}
+      Revision: $(counterVar)
       DotNetStandardPackagesToPack: |
          src/SFA.DAS.Payments.Messages.Common/SFA.DAS.Payments.Messages.Common.csproj;
          src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj;
