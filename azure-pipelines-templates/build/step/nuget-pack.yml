@@ -8,7 +8,7 @@ parameters:
   Revision: 0
   #setrevision: 1.0.0
   #  Revision: $[counter(${{ parameters.Minor }}, 0)]
-  setrevision: '"${{ parameters.Major }}"."${{ parameters.Minor }}"."${{ parameters.Revision }}"'  
+  setrevision: "${{ parameters.Major }}"."${{ parameters.Minor }}"."${{ parameters.Revision }}"  
     
  
 steps:
