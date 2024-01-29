@@ -9,19 +9,19 @@ jobs:
     - name: counterVar
       value: $[counter(variables['patch'], 1)]
   steps:
-  - task: UseDotNet@2
-    inputs:
-      packageType: 'sdk'
-      version: '5.x'
-      installationPath: $(Agent.ToolsDirectory)/dotnet
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '3.x'
+        installationPath: $(Agent.ToolsDirectory)/dotnet
 
-  - script: dotnet tool install --global GitVersion.Tool
-    displayName: 'Install GitVersion'
+    - script: dotnet tool install --global GitVersion.Tool
+      displayName: 'Install GitVersion'
 
-  - script: gitversion /updateassemblyinfo
-    displayName: 'Update Version'
-    
-next-version: $(counterVar).0
+    - script: gitversion /updateassemblyinfo
+      displayName: 'Update Version'
+
+  next-version: $(counterVar).0
 mode: Mainline
 legacy-semver-padding: 0
 build-metadata-padding: 0
