@@ -1,25 +1,38 @@
-jobs:
-- job: GitVersion
-  pool:
-    name: SLD Build pool
-    #demands: LATEST_DOTNET_VERSION
-  variables:
-    - name: patch
-      value: 0
-    - name: counterVar
-      value: $[counter(variables['patch'], 1)]
-  steps:
-    - task: UseDotNet@2
-      inputs:
-        packageType: 'sdk'
-        version: '3.x'
-        installationPath: $(Agent.ToolsDirectory)/dotnet
-
-    - script: dotnet tool install --global GitVersion.Tool
-      displayName: 'Install GitVersion'
-
-    - script: gitversion /updateassemblyinfo
-      displayName: 'Update Version'
-
-next-version: $(counterVar).0
+next-version: 1.0
 mode: Mainline
+legacy-semver-padding: 0
+build-metadata-padding: 0
+commits-since-version-source-padding: 0
+assembly-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-scheme: MajorMinorPatchTag
+assembly-informational-format: '{LegacySemVer}'
+branches:
+  main:
+    regex: ^master$|^main$
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    tag: ''
+    track-merge-target: false
+    tracks-release-branches: false
+    is-release-branch: false
+  release:
+    regex: ^release?[/-]
+    source-branches: ['main']
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    tag: beta
+    track-merge-target: false
+    tracks-release-branches: false
+    is-release-branch:  true
+  develop:
+    regex: ^develop?[/-]
+    mode: ContinuousDelivery
+    tag: 'sd.{BranchName}'
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    source-branches: [ 'main' ]
+    tracks-release-branches: true
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 0
