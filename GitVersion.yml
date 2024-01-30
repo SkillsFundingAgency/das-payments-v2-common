@@ -9,7 +9,7 @@ assembly-informational-format: '{LegacySemVer}'
 branches:
   main:
     regex: ^master$|^main$
-    increment: Patch
+    increment: Major
     prevent-increment-of-merged-branch-version: true
     tag: ''
     track-merge-target: false
@@ -25,7 +25,7 @@ branches:
     tracks-release-branches: false
     is-release-branch:  true
   develop:
-    regex: ^develop?[/-]
+    regex: ^Add?[/-]
     mode: ContinuousDelivery
     tag: 'sd.{BranchName}'
     increment: Minor
