@@ -1,16 +1,23 @@
 next-version: 1.0
-mode: Mainline
+mode: ContinuousDelivery
 legacy-semver-padding: 0
 build-metadata-padding: 0
 commits-since-version-source-padding: 0
 assembly-versioning-scheme: MajorMinorPatch
 assembly-file-versioning-scheme: MajorMinorPatchTag
 assembly-informational-format: '{LegacySemVer}'
+major-version-bump-message: '\+semver:\s?(breaking|major)'
+minor-version-bump-message: '\+semver:\s?(feature|minor)'
+patch-version-bump-message: '\+semver:\s?(fix|patch)'
 branches:
   main:
-    regex: ^master$|^main$
+  #  regex: ^master$|^main$
     increment: Major
     prevent-increment-of-merged-branch-version: true
+    major-version-bump-message: '\+semver:\s?(breaking|major)'
+    minor-version-bump-message: '\+semver:\s?(feature|minor)'
+    patch-version-bump-message: '\+semver:\s?(fix|patch)'
+    commit-message-incrementing: Enabled
     tag: ''
     track-merge-target: false
     tracks-release-branches: false
@@ -24,12 +31,15 @@ branches:
     track-merge-target: false
     tracks-release-branches: false
     is-release-branch:  true
-  develop:
+  AddCounter:
     regex: ^Add?[/-]
     mode: ContinuousDelivery
     tag: 'sd.{BranchName}'
     increment: Minor
     prevent-increment-of-merged-branch-version: false
+    major-version-bump-message: '\+semver:\s?(breaking|major)'
+    minor-version-bump-message: '\+semver:\s?(feature|minor)'
+    patch-version-bump-message: '\+semver:\s?(fix|patch)'
     track-merge-target: true
     source-branches: [ 'main' ]
     tracks-release-branches: true
