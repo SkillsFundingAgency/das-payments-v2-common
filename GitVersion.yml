@@ -9,39 +9,3 @@ assembly-informational-format: '{LegacySemVer}'
 major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
 patch-version-bump-message: '\+semver:\s?(fix|patch)'
-branches:
-  main:
-    increment: Major
-    prevent-increment-of-merged-branch-version: true
-    major-version-bump-message: '\+semver:\s?(breaking|major)'
-    minor-version-bump-message: '\+semver:\s?(feature|minor)'
-    patch-version-bump-message: '\+semver:\s?(fix|patch)'
-    commit-message-incrementing: Enabled
-    tag: ''
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
-  release:
-    regex: ^release?[/-]
-    source-branches: ['main']
-    increment: Patch
-    prevent-increment-of-merged-branch-version: true
-    tag: beta
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch:  true
-  AddCounter:
-    regex: ^Add?[/-]
-    mode: ContinuousDelivery
-    tag: 'sd.{BranchName}'
-    increment: Minor
-    prevent-increment-of-merged-branch-version: false
-    major-version-bump-message: '\+semver:\s?(breaking|major)'
-    minor-version-bump-message: '\+semver:\s?(feature|minor)'
-    patch-version-bump-message: '\+semver:\s?(fix|patch)'
-    track-merge-target: true
-    source-branches: [ 'main' ]
-    tracks-release-branches: true
-    is-release-branch: false
-    is-mainline: false
-    pre-release-weight: 0
