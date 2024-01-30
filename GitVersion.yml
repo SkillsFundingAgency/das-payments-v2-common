@@ -1,5 +1,5 @@
 next-version: 1.0
-mode: mainline
+mode: ContinuousDelivery
 legacy-semver-padding: 0
 build-metadata-padding: 0
 commits-since-version-source-padding: 0
