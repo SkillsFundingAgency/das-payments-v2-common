@@ -12,12 +12,7 @@ jobs:
   steps:
   - template: /azure-pipelines-templates/build/step/gitversion.yml
 
-  #- template: /azure-pipelines-templates/build/step/app-build.yml
-  #  parameters:
-  #    SonarCloudProjectKey: SkillsFundingAgency_das-shared-packages_SFA.DAS.Payments.Application
-
   - task: DotNetCoreCLI@2
-  # task: NuGetCommand@2
     displayName: Restore
     inputs:
       command: restore
@@ -25,9 +20,7 @@ jobs:
       noCache: true
       feedsToUse: 'select'
       vstsFeed: 'dct-pkg'
-    #  vstsFeed: '1d5deb2d-cf8b-4bb1-b147-d13bc246e3f4'
 
-  # task: DotNetCoreCLI@2
   - task: NuGetCommand@2
     displayName: Restore
     inputs:
@@ -36,10 +29,8 @@ jobs:
       noCache: true
       feedsToUse: 'select'
       vstsFeed: 'dct-pkg'
-    #  vstsFeed: '1d5deb2d-cf8b-4bb1-b147-d13bc246e3f4'
     
   - task: DotNetCoreCLI@2
-  #- task: NuGetCommand@2
     displayName: Build
     inputs:
       projects:  ${{ parameters.TargetProjects }}
@@ -103,9 +94,22 @@ jobs:
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)/publish'
     inputs:
       Contents: |
-       /**
+        /**
       TargetFolder: '$(build.artifactstagingdirectory)/publish'
       OverWrite: true
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build UnitTest Projects'
+    inputs:
+      projects: 'src/**/*unittest*.csproj'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet test UnitTest Projects'
+    inputs:
+      command: test
+      projects: 'src/**/*unittest*.csproj'
+      arguments: '--filter FullyQualifiedName~UnitTests'      
+
 
   - task: PublishPipelineArtifact@1
     displayName: 'Publish Artifact: drop'
@@ -116,10 +120,9 @@ jobs:
   - template: /azure-pipelines-templates/build/step/nuget-pack.yml
     parameters:
       DotNetStandardPackagesToPack: |
-         src/SFA.DAS.Payments.Messages.Common/SFA.DAS.Payments.Messages.Common.csproj;
-         src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj;
-         src/SFA.DAS.Payments.Core/SFA.DAS.Payments.Core.csproj;
-         src/SFA.DAS.Payments.Messaging/SFA.DAS.Payments.Messaging.csproj;
-         src/SFA.DAS.Payments.Model.Core/SFA.DAS.Payments.Model.Core.csproj;
-         src/SFA.DAS.Payments.ServiceFabric.Core/SFA.DAS.Payments.ServiceFabric.Core.csproj;
-        
+        src/SFA.DAS.Payments.Messages.Common/SFA.DAS.Payments.Messages.Common.csproj;
+        src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj;
+        src/SFA.DAS.Payments.Core/SFA.DAS.Payments.Core.csproj;
+        src/SFA.DAS.Payments.Messaging/SFA.DAS.Payments.Messaging.csproj;
+        src/SFA.DAS.Payments.Model.Core/SFA.DAS.Payments.Model.Core.csproj;
+        src/SFA.DAS.Payments.ServiceFabric.Core/SFA.DAS.Payments.ServiceFabric.Core.csproj;
