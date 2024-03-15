@@ -27,6 +27,7 @@
     <PackageReference Include="Microsoft.ServiceFabric.Data.Interfaces" Version="3.2.162" />
     <PackageReference Include="Microsoft.ServiceFabric.Diagnostics.Internal" Version="3.2.162" />
     <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.2.162" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NServiceBus" Version="7.1.5" />
     <PackageReference Include="NServiceBus.Autofac" Version="7.0.0" />
     <PackageReference Include="NServiceBus.Azure.Transports.WindowsAzureStorageQueues" Version="8.1.0" />
