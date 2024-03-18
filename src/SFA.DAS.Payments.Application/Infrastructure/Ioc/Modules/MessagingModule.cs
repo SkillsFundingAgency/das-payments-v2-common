@@ -54,7 +54,7 @@ namespace SFA.DAS.Payments.Application.Infrastructure.Ioc.Modules
                     .SingleInstance();
                 EndpointConfigurationEvents.OnConfiguringTransport(transport);  //TODO: find AutoFac & NSB way to do this
                 endpointConfiguration.SendFailedMessagesTo(config.FailedMessagesQueue);
-                endpointConfiguration.UseSerialization<NewtonsoftSerializer>();
+                endpointConfiguration.UseSerialization<NewtonsoftJsonSerializer>();
                 endpointConfiguration.EnableInstallers();
                 //endpointConfiguration.Pipeline.Register(typeof(TelemetryHandlerBehaviour), "Sends handler timing to telemetry service.");
                 endpointConfiguration.EnableCallbacks(makesRequests: false);
