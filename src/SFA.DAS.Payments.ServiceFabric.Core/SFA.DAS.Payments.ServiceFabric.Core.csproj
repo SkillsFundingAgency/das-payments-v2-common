@@ -26,10 +26,10 @@
     <PackageReference Include="Autofac.ServiceFabric" Version="4.0.0" />
     <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.15.0" />
     <PackageReference Include="Microsoft.ServiceFabric" Version="10.0.1816" />    
-    <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="7.0.1001" />
+    <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="7.0.1816" />
     <PackageReference Include="Microsoft.ServiceFabric.Data.Interfaces" Version="7.0.1816" />
     <PackageReference Include="Microsoft.ServiceFabric.Diagnostics.Internal" Version="7.0.1816" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="7.0.1010" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="7.0.1816" />
     <PackageReference Include="NServiceBus" Version="8.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>

@@ -37,7 +37,6 @@ namespace SFA.DAS.Payments.ServiceFabric.Core
                 ? (string)receivedMessage.ApplicationProperties[transportEncodingHeaderKey]
                 : "application/octet-stream";
 
-            byte[] messageBody;
             var monitoringMessageJson = receivedMessage.ToString();
             if (transportEncoding.Equals("wcf/byte-array", StringComparison.OrdinalIgnoreCase))
             {
