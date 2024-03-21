@@ -5,28 +5,34 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SFA.DAS.Payments.Application.Infrastructure.Ioc
 {
     public class ContainerFactory
     {
         public static IContainer Container { get; private set; } //Needed to automapper to resolve instances, yuck...
+        public static IServiceCollection ServiceCollection { get; private set; }
         //TODO: make non static
-        public static IContainer CreateContainer()
-        {
-            return CreateBuilder().Build();
-        }
+        //public static IContainer CreateContainer()
+        //{
+        //    return CreateBuilder().Build();
+        //}
 
         public static IContainer CreateContainer(ContainerBuilder builder)
         {
+            builder.Populate(ServiceCollection);
+
             Container = builder.Build();
             return Container;
         }
 
         public static ContainerBuilder CreateBuilder()
         {
+            ServiceCollection = new ServiceCollection();
             var builder = new ContainerBuilder();
-            RegisterModules(builder); 
+            RegisterModules(builder);
             return builder;
         }
 
