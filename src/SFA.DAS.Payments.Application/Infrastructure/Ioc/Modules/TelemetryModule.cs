@@ -13,14 +13,19 @@ namespace SFA.DAS.Payments.Application.Infrastructure.Ioc.Modules
             builder.Register((c, p) =>
                 {
                     var configHelper = c.Resolve<IConfigurationHelper>();
-                    return new TelemetryConfiguration(configHelper.GetSetting("ApplicationInsightsInstrumentationKey"));
+                    return new TelemetryConfiguration
+                    {
+                        ConnectionString = $"InstrumentationKey={configHelper.GetSetting("ApplicationInsightsInstrumentationKey")}"
+                    };
                 })
                 .As<TelemetryConfiguration>();
 
             builder.Register((c, p) =>
                 {
+                    var configHelper = c.Resolve<IConfigurationHelper>();
                     var config = c.Resolve<TelemetryConfiguration>();
-                    return new TelemetryClient(config) { InstrumentationKey = config.InstrumentationKey };
+                    config.ConnectionString = $"InstrumentationKey={configHelper.GetSetting("ApplicationInsightsInstrumentationKey")}";
+                    return new TelemetryClient(config);
                 })
                 .As<TelemetryClient>()
                 .SingleInstance();
