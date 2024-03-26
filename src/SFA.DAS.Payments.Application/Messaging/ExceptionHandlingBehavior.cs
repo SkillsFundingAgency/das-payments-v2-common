@@ -58,10 +58,6 @@ namespace SFA.DAS.Payments.Application.Messaging
     {
         public static Dictionary<TKey, TValue> ToDictionaryWithoutNullValues<TSource, TKey, TValue>(this IEnumerable<TSource> keys, Func<TSource, TKey> keySelector, Func<TSource, TValue> valueSelector)
         {
-            // message.Learner?.ReferenceNumber
-            // message.Learner.LearnRefNumber
-            //{message.CollectionPeriod.Period:00}-{message.CollectionPeriod.AcademicYear:0000}"
-             
             return keys
                 .Select(x => (key: keySelector(x), value: valueSelector(x)))
                 .Where(x => x.value != null)
