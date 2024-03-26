@@ -18,54 +18,27 @@ namespace SFA.DAS.Payments.Application.Messaging
 
     public class EndpointInstanceFactory : IEndpointInstanceFactory
     {
-        //private readonly EndpointConfiguration endpointConfiguration;
         private static IEndpointInstance endpointInstance;
-        //private static readonly SemaphoreSlim LockObject = new SemaphoreSlim(1, 1);
+        
         private static readonly ReaderWriterLockSlim Locker = new ReaderWriterLockSlim();
         private static IStartableEndpointWithExternallyManagedContainer startableEndpoint;
-
-        //public EndpointInstanceFactory(EndpointConfiguration endpointConfiguration)
-        //{
-        //    this.endpointConfiguration = endpointConfiguration ?? throw new ArgumentNullException(nameof(endpointConfiguration));
-        //}
-
+        
         //TODO: Hack to cope with the new NSB config API.  Will refactor. 
         public static void Initialise(IApplicationConfiguration config)
         {
-
             var endpointConfig = EndpointConfigurationFactory.Create(config);
             startableEndpoint = EndpointWithExternallyManagedContainer.Create(endpointConfig, ContainerFactory.ServiceCollection);
         }
 
         public async Task<IEndpointInstance> GetEndpointInstance()
-        {
-            //Locker.EnterUpgradeableReadLock();
-            try
-            {
-                if (endpointInstance != null)
-                    return endpointInstance;
-                //Locker.EnterWriteLock();
-                try
-                {
-                    if (startableEndpoint == null)
-                        throw new InvalidOperationException("EndpointInstanceFactory has not been initialised!!");
-                    //var startableEndpoint =
-                    //    EndpointWithExternallyManagedContainer.Create(endpointConfiguration, new ServiceCollection());
+        {            
+            if (endpointInstance != null)
+                return endpointInstance;
 
-                    endpointInstance =
-                        await startableEndpoint.Start(new AutofacServiceProvider(ContainerFactory.Container));
-                    //                    endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
-                }
-                finally
-                {
-                    //Locker.ExitWriteLock();
-                }
-            }
-            finally
-            {
-                //Locker.ExitUpgradeableReadLock();
-            }
-            return endpointInstance;
+            if (startableEndpoint == null)
+                throw new InvalidOperationException("EndpointInstanceFactory has not been initialised!!");
+
+            return await startableEndpoint.Start(new AutofacServiceProvider(ContainerFactory.Container));
         }
     }
 }

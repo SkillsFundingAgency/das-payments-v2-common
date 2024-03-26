@@ -39,19 +39,6 @@ namespace SFA.DAS.Payments.Messaging.Serialization.NServiceBus
             
             return receivedMessage.ToString().Trim(Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble())
                 .ToCharArray());
-            //if (transportEncoding.Equals("wcf/byte-array", StringComparison.OrdinalIgnoreCase))
-            //{
-            //    var doc = receivedMessage.GetBody<XmlElement>();
-            //    messageBody = Convert.FromBase64String(doc.InnerText);
-            //}
-            //else
-            //    messageBody = receivedMessage.Body;
-
-            //var monitoringMessageJson = Encoding.UTF8.GetString(messageBody);
-            //var sanitisedMessageJson = monitoringMessageJson
-            //    .Trim(Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble())
-            //        .ToCharArray());
-            //return sanitisedMessageJson;
         }
     }
 }

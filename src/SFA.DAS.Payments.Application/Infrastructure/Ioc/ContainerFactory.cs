@@ -14,11 +14,6 @@ namespace SFA.DAS.Payments.Application.Infrastructure.Ioc
     {
         public static IContainer Container { get; private set; } //Needed to automapper to resolve instances, yuck...
         public static IServiceCollection ServiceCollection { get; private set; }
-        //TODO: make non static
-        //public static IContainer CreateContainer()
-        //{
-        //    return CreateBuilder().Build();
-        //}
 
         public static IContainer CreateContainer(ContainerBuilder builder)
         {
