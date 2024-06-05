@@ -70,6 +70,7 @@ namespace SFA.DAS.Payments.Application.Repositories
             modelBuilder.ApplyConfiguration(new ProviderAdjustmentsModelConfiguration());
             modelBuilder.ApplyConfiguration(new CollectionPeriodModelConfiguration());
             modelBuilder.ApplyConfiguration(new LevyAccountAuditModelConfiguration());
+            modelBuilder.ApplyConfiguration(new SubmissionJobsToBeDeletedModelConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
