@@ -13,13 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Model.Core
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CDC48CF7-8B78-40BB-BF4C-887150C58D47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Payments.Model.Core.UnitTests", "SFA.DAS.Payments.Model.Core.UnitTests\SFA.DAS.Payments.Model.Core.UnitTests.csproj", "{C5E94029-2E85-4443-9D8B-0D0268E001DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Model.Core.UnitTests", "SFA.DAS.Payments.Model.Core.UnitTests\SFA.DAS.Payments.Model.Core.UnitTests.csproj", "{C5E94029-2E85-4443-9D8B-0D0268E001DA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Messages.Common", "SFA.DAS.Payments.Messages.Common\SFA.DAS.Payments.Messages.Common.csproj", "{00AA25D8-FC72-4BAD-B048-A09E8951132A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.ServiceFabric.Core", "SFA.DAS.Payments.ServiceFabric.Core\SFA.DAS.Payments.ServiceFabric.Core.csproj", "{9931A30D-CA04-4B04-A13C-C7CA8A57CFD4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.ServiceFabric.Core.UnitTests", "SFA.DAS.Payments.ServiceFabric.Core.UnitTests\SFA.DAS.Payments.ServiceFabric.Core.UnitTests.csproj", "{A9082873-7200-4164-BEAC-1D5E220530A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,21 +47,12 @@ Global
 		{00AA25D8-FC72-4BAD-B048-A09E8951132A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00AA25D8-FC72-4BAD-B048-A09E8951132A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00AA25D8-FC72-4BAD-B048-A09E8951132A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9931A30D-CA04-4B04-A13C-C7CA8A57CFD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9931A30D-CA04-4B04-A13C-C7CA8A57CFD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9931A30D-CA04-4B04-A13C-C7CA8A57CFD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9931A30D-CA04-4B04-A13C-C7CA8A57CFD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9082873-7200-4164-BEAC-1D5E220530A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9082873-7200-4164-BEAC-1D5E220530A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9082873-7200-4164-BEAC-1D5E220530A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9082873-7200-4164-BEAC-1D5E220530A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C5E94029-2E85-4443-9D8B-0D0268E001DA} = {CDC48CF7-8B78-40BB-BF4C-887150C58D47}
-		{A9082873-7200-4164-BEAC-1D5E220530A0} = {CDC48CF7-8B78-40BB-BF4C-887150C58D47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5B6A905A-B2AC-487C-905A-BB467257D46A}
