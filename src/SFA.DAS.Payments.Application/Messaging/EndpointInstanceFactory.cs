@@ -22,12 +22,18 @@ namespace SFA.DAS.Payments.Application.Messaging
         
         private static readonly ReaderWriterLockSlim Locker = new ReaderWriterLockSlim();
         private static IStartableEndpointWithExternallyManagedContainer startableEndpoint;
-        
+
+
         //TODO: Hack to cope with the new NSB config API.  Will refactor. 
         public static void Initialise(IApplicationConfiguration config)
         {
             var endpointConfig = EndpointConfigurationFactory.Create(config);
             startableEndpoint = EndpointWithExternallyManagedContainer.Create(endpointConfig, ContainerFactory.ServiceCollection);
+        }
+
+        public static void Initialise(EndpointConfiguration config)
+        {
+            startableEndpoint = EndpointWithExternallyManagedContainer.Create(config, ContainerFactory.ServiceCollection);
         }
 
         public async Task<IEndpointInstance> GetEndpointInstance()
