@@ -31,12 +31,11 @@ namespace SFA.DAS.Payments.Application.Infrastructure.Ioc.Modules
                 var conventions = endpointConfiguration.Conventions();
                 conventions.DefiningMessagesAs(type => (type.Namespace?.StartsWith("SFA.DAS.Payments") ?? false) && (type.Namespace?.Contains(".Messages") ?? false));
                 conventions.DefiningCommandsAs(type => (type.Namespace?.StartsWith("SFA.DAS.Payments") ?? false) && (type.Namespace?.Contains(".Messages.Commands") ?? false));
-                conventions.DefiningEventsAs(type => (type.Namespace?.StartsWith("SFA.DAS.Payments") ?? false) && ((type.Namespace?.Contains(".Messages.Events") ?? false) || (type.Namespace?.Contains(".Messages.Common") ?? false)));
+                conventions.DefiningEventsAs(type => (type.Namespace?.StartsWith("SFA.DAS.Payments") ?? false) && ((type.Namespace?.Contains(".Messages.Events") ?? false) || (type.Namespace?.Contains(".Messages.Core") ?? false)));
 
-                var persistence = endpointConfiguration.UsePersistence<AzureStoragePersistence>();
+                var persistence = endpointConfiguration.UsePersistence<AzureTablePersistence>();
                 persistence.ConnectionString(config.StorageConnectionString);
-
-                endpointConfiguration.DisableFeature<TimeoutManager>();
+                
                 if (!string.IsNullOrEmpty(config.NServiceBusLicense))
                 {
                     var license = WebUtility.HtmlDecode(config.NServiceBusLicense);
@@ -47,14 +46,14 @@ namespace SFA.DAS.Payments.Application.Infrastructure.Ioc.Modules
                 transport
                     .ConnectionString(config.ServiceBusConnectionString)
                     .Transactions(TransportTransactionMode.ReceiveOnly)
-                    .RuleNameShortener(ruleName => ruleName.Split('.').LastOrDefault() ?? ruleName);
+                    .SubscriptionNamingConvention(ruleName => ruleName.Split('.').LastOrDefault() ?? ruleName);
                 transport.PrefetchCount(20);
                 builder.RegisterInstance(transport)
                     .As<TransportExtensions<AzureServiceBusTransport>>()
                     .SingleInstance();
                 EndpointConfigurationEvents.OnConfiguringTransport(transport);  //TODO: find AutoFac & NSB way to do this
                 endpointConfiguration.SendFailedMessagesTo(config.FailedMessagesQueue);
-                endpointConfiguration.UseSerialization<NewtonsoftSerializer>();
+                endpointConfiguration.UseSerialization<NewtonsoftJsonSerializer>();
                 endpointConfiguration.EnableInstallers();
                 //endpointConfiguration.Pipeline.Register(typeof(TelemetryHandlerBehaviour), "Sends handler timing to telemetry service.");
                 endpointConfiguration.EnableCallbacks(makesRequests: false);

@@ -10,7 +10,7 @@
 
 ## How It Works
 
-The Payments V2 Common repository is a grouping of all common class librarys referenced throughout the Payments V2 solution. 
+The Payments V2 Common repository is a grouping of all common class libraries referenced throughout the Payments V2 solution. 
 
 More information here: 
 - https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/400130049/4.+Payments+v2+-+Components+DAS+Space
@@ -26,9 +26,7 @@ Setup instructions: https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pa
 
 ### Config
 
-As detailed in: https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/644972941/Developer+Configuration+Settings
-
-Select the configuration for the Earning Events application
+N/A - configuration is set up in the consuming Payments V2 applications
 
 ## 🔗 External Dependencies
 

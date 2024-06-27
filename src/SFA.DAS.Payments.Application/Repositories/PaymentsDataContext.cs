@@ -35,7 +35,7 @@ namespace SFA.DAS.Payments.Application.Repositories
         public virtual DbSet<ProviderAdjustmentModel> ProviderAdjustments { get; protected set; }
 
         
-        public virtual DbQuery<SubmissionJobsToBeDeletedModel> SubmissionJobsToBeDeleted { get; set; }
+        public virtual DbSet<SubmissionJobsToBeDeletedModel> SubmissionJobsToBeDeleted { get; set; }
 
         public PaymentsDataContext(string connectionString)
         {
@@ -70,6 +70,7 @@ namespace SFA.DAS.Payments.Application.Repositories
             modelBuilder.ApplyConfiguration(new ProviderAdjustmentsModelConfiguration());
             modelBuilder.ApplyConfiguration(new CollectionPeriodModelConfiguration());
             modelBuilder.ApplyConfiguration(new LevyAccountAuditModelConfiguration());
+            modelBuilder.ApplyConfiguration(new SubmissionJobsToBeDeletedModelConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
