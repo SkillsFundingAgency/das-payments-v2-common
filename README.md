@@ -10,7 +10,7 @@
 
 ## How It Works
 
-The Payments V2 Common repository is a grouping of all common class librarys referenced throughout the Payments V2 solution. 
+The Payments V2 Common repository is a grouping of all common class libraries referenced throughout the Payments V2 solution. 
 
 More information here: 
 - https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/400130049/4.+Payments+v2+-+Components+DAS+Space
@@ -20,9 +20,7 @@ More information here:
 
 ### Pre-Requisites
 
-* An Azure DevBox configured for Payments V2 development
-
-Setup instructions: https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/950927878/Development+Environment+-+Payments+V2+DAS+Space
+Setup instructions can be found at the following link, which will help you set up your environment and access the correct repositories: https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/950927878/Development+Environment+-+Payments+V2+DAS+Space
 
 ### Config
 
