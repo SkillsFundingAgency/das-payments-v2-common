@@ -36,7 +36,11 @@ namespace SFA.DAS.Payments.Application.Messaging
             var endpointConfig = EndpointConfigurationFactory.Create(config);
             startableEndpoint = EndpointWithExternallyManagedContainer.Create(endpointConfig, ContainerFactory.ServiceCollection);
         }
-
+        //FundingSources sets up a full EndpointConfiguration that needs passing in.
+        public static void Initialise(EndpointConfiguration config)
+        {
+            startableEndpoint = EndpointWithExternallyManagedContainer.Create(config, ContainerFactory.ServiceCollection);
+        }
         public async Task<IEndpointInstance> GetEndpointInstance()
         {
             //Locker.EnterUpgradeableReadLock();
