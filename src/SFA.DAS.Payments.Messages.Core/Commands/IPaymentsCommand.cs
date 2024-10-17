@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SFA.DAS.Payments.Messages.Common.Commands
+namespace SFA.DAS.Payments.Messages.Core.Commands
 {
     public interface IPaymentsCommand: IJobMessage, ICommand
     {

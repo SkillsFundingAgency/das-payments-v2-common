@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using SFA.DAS.Payments.Model.Core.Entities;
 using SFA.DAS.Payments.Model.Core.Incentives;
 
-namespace SFA.DAS.Payments.Messages.Common.Events
+namespace SFA.DAS.Payments.Messages.Core.Events
 {
     public interface IFunctionalSkillEarningEvent : IEarningEvent
     {
