@@ -15,6 +15,7 @@ namespace SFA.DAS.Payments.Application.Infrastructure.Telemetry
             telemetry.TrackDependency(dependencyType.ToString("G"), dependencyName, startTime, duration, success);
         }
 
+
         public static void TrackDuration(this ITelemetry telemetry, string eventName, Stopwatch stopwatch, IPaymentsEvent paymentEvent, long? employerAccountId = null)
         {
             stopwatch.Stop();
