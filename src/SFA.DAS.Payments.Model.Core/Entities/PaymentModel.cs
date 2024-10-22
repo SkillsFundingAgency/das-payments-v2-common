@@ -47,10 +47,12 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public ApprenticeshipEmployerType ApprenticeshipEmployerType { get; set; }
         public string ReportingAimFundingLineType { get; set; }
         public long? LearningAimSequenceNumber { get; set; }
+        public byte? AgeAtStartOfLearning { get; set; }
+        public FundingPlatformType? FundingPlatformType { get; set; }
 
         public PaymentModel Clone()
         {
-            return (PaymentModel) MemberwiseClone();
+            return (PaymentModel)MemberwiseClone();
         }
     }
 }
