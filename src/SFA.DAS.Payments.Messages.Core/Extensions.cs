@@ -1,8 +1,8 @@
 ﻿using System;
-using SFA.DAS.Payments.Messages.Common.Commands;
-using SFA.DAS.Payments.Messages.Common.Events;
+using SFA.DAS.Payments.Messages.Core.Commands;
+using SFA.DAS.Payments.Messages.Core.Events;
 
-namespace SFA.DAS.Payments.Messages.Common
+namespace SFA.DAS.Payments.Messages.Core
 {
     public static class Extensions
     {

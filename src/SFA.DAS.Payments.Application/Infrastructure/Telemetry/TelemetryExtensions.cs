@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using SFA.DAS.Payments.Messages.Common.Commands;
-using SFA.DAS.Payments.Messages.Common.Events;
+using SFA.DAS.Payments.Messages.Core.Commands;
+using SFA.DAS.Payments.Messages.Core.Events;
 
 namespace SFA.DAS.Payments.Application.Infrastructure.Telemetry
 {
@@ -14,6 +14,7 @@ namespace SFA.DAS.Payments.Application.Infrastructure.Telemetry
         {
             telemetry.TrackDependency(dependencyType.ToString("G"), dependencyName, startTime, duration, success);
         }
+
 
         public static void TrackDuration(this ITelemetry telemetry, string eventName, Stopwatch stopwatch, IPaymentsEvent paymentEvent, long? employerAccountId = null)
         {
