@@ -28,13 +28,13 @@ stages:
               nuGetFeedType: external
               publishFeedCredentials: 'Paymentsv2-Nuget'
 
-          - download: current
-            artifact: NuGetPackages-Messages
-          - task: NuGetCommand@2
-            displayName: NuGet push Common Messages
-            inputs:
-              command: push
-              packagesToPush: '$(Pipeline.Workspace)/NuGetPackages-Messages/*.nupkg;!$(Pipeline.Workspace)/NuGetPackages-Messages/*.symbols.nupkg'
-              allowPackageConflicts: true
-              nuGetFeedType: external
-              publishFeedCredentials: 'SFA NuGet'
+          # - download: current
+          #   artifact: NuGetPackages-Messages
+          # - task: NuGetCommand@2
+          #   displayName: NuGet push Common Messages
+          #   inputs:
+          #     command: push
+          #     packagesToPush: '$(Pipeline.Workspace)/NuGetPackages-Messages/*.nupkg;!$(Pipeline.Workspace)/NuGetPackages-Messages/*.symbols.nupkg'
+          #     allowPackageConflicts: true
+          #     nuGetFeedType: external
+          #     publishFeedCredentials: 'SFA NuGet'
