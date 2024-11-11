@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SFA.DAS.Payments.Messages.Core.Commands
+namespace SFA.DAS.Payments.Messages.Common.Commands
 {
     public abstract class PaymentsCommand: IPaymentsCommand
     {

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Model.Core
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CDC48CF7-8B78-40BB-BF4C-887150C58D47}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Messages.Core", "SFA.DAS.Payments.Messages.Core\SFA.DAS.Payments.Messages.Core.csproj", "{00AA25D8-FC72-4BAD-B048-A09E8951132A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Messages.Common", "SFA.DAS.Payments.Messages.Common\SFA.DAS.Payments.Messages.Common.csproj", "{00AA25D8-FC72-4BAD-B048-A09E8951132A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Payments.Model.Core.UnitTests", "SFA.DAS.Payments.Model.Core.UnitTests\SFA.DAS.Payments.Model.Core.UnitTests.csproj", "{B382838E-D558-4467-ADEB-8EC67EC8FB22}"
 EndProject

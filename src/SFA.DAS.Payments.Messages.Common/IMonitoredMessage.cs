@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.Payments.Messages.Core
+﻿namespace SFA.DAS.Payments.Messages.Common
 {
     public interface IMonitoredMessage : IJobMessage
     {

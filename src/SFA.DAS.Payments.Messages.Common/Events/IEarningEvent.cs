@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SFA.DAS.Payments.Model.Core;
 
-namespace SFA.DAS.Payments.Messages.Core.Events
+namespace SFA.DAS.Payments.Messages.Common.Events
 {
     public interface IEarningEvent : IPaymentsEvent
     {
