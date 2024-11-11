@@ -38,3 +38,4 @@ stages:
           #     allowPackageConflicts: true
           #     nuGetFeedType: external
           #     publishFeedCredentials: 'SFA NuGet'
+          
