@@ -38,6 +38,7 @@ namespace SFA.DAS.Payments.Messaging.Serialization.NServiceBus
                 ? (string)receivedMessage.ApplicationProperties[transportEncodingHeaderKey]
                 : "application/octet-stream";
             byte[] messageBody;
+
             return receivedMessage.Body.ToString().Trim(Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble())
                 .ToCharArray());
             //if (transportEncoding.Equals("wcf/byte-array", StringComparison.OrdinalIgnoreCase))
