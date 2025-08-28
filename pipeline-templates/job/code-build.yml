@@ -45,12 +45,4 @@ jobs:
         src/SFA.DAS.Payments.Application/SFA.DAS.Payments.Application.csproj;
         src/SFA.DAS.Payments.Core/SFA.DAS.Payments.Core.csproj;
         src/SFA.DAS.Payments.Messaging/SFA.DAS.Payments.Messaging.csproj;
-        src/SFA.DAS.Payments.Model.Core/SFA.DAS.Payments.Model.Core.csproj;
-
-  
-
-  # - template: /azure-pipelines-templates/build/step/nuget-pack_Messages.yml
-  #   parameters:
-  #     DotNetStandardPackagesToPack: |
-  #       src/SFA.DAS.Payments.Messages.Core/SFA.DAS.Payments.Messages.Core.csproj;
-        
+        src/SFA.DAS.Payments.Model.Core/SFA.DAS.Payments.Model.Core.csproj;SW
