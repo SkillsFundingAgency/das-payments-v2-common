@@ -33,7 +33,7 @@ namespace SFA.DAS.Payments.Application.Repositories
         DbSet<ProviderAdjustmentModel> ProviderAdjustments { get; }
         DbSet<CollectionPeriodModel> CollectionPeriod { get; }
 
-        DbQuery<SubmissionJobsToBeDeletedModel> SubmissionJobsToBeDeleted { get; set; }
+        DbSet<SubmissionJobsToBeDeletedModel> SubmissionJobsToBeDeleted { get; set; }
 
         DatabaseFacade Database { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));

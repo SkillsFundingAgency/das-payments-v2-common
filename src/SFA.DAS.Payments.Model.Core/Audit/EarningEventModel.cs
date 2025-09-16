@@ -3,7 +3,7 @@ using SFA.DAS.Payments.Model.Core.Entities;
 
 namespace SFA.DAS.Payments.Model.Core.Audit
 {
-    public class EarningEventModel: PaymentsEventModel
+    public class EarningEventModel : PaymentsEventModel
     {
         public long Id { get; set; }
         public ContractType ContractType { get; set; }
