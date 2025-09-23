@@ -1,2 +1,7 @@
+mode: Mainline
 next-version: 2.2.0
-mode: mainline
+branches: {}
+ignore:
+  sha: []
+commit-message-incrementing: Disabled
+assembly-versioning-scheme: None
