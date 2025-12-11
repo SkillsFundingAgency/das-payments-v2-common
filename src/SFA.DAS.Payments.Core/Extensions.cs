@@ -21,7 +21,7 @@ namespace SFA.DAS.Payments.Core
 
         public static decimal AsRounded(this decimal unrounded)
         {
-            return Math.Round(unrounded, 5);
+            return Math.Round(unrounded, 5, MidpointRounding.ToEven);
         }
 
         public static decimal? AsRounded(this decimal? unrounded)
