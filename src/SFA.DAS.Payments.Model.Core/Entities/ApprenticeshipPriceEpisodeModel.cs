@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
 
 namespace SFA.DAS.Payments.Model.Core.Entities
 {
@@ -8,6 +10,7 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public long ApprenticeshipId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal Cost { get; set; }
         public bool Removed { get; set; }
     }

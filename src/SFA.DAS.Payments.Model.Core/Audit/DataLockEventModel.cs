@@ -1,7 +1,8 @@
-﻿using System;
+﻿using SFA.DAS.Payments.Model.Core.Entities;
+using System;
 using System.Collections.Generic;
-using SFA.DAS.Payments.Model.Core.Entities;
-
+using System.ComponentModel.DataAnnotations.Schema;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
 namespace SFA.DAS.Payments.Model.Core.Audit
 {
     public class DataLockEventModel : PaymentsEventModel
@@ -14,6 +15,8 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public virtual List<DataLockEventNonPayablePeriodModel> NonPayablePeriods { get; set; } = new List<DataLockEventNonPayablePeriodModel>();
         public virtual List<DataLockEventPayablePeriodModel> PayablePeriods { get; set; } = new List<DataLockEventPayablePeriodModel>();
         public string IlrFileName { get; set; }
+
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal? SfaContributionPercentage { get; set; }
         public string EventType { get; set; }
         public bool IsPayable { get; set; }

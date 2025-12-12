@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using SFA.DAS.Payments.Model.Core.Entities;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
 
 namespace SFA.DAS.Payments.Model.Core.Audit
 {
@@ -13,7 +15,9 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public short AcademicYear { get; set; }
         public byte CollectionPeriod { get; set; }
         public byte DeliveryPeriod { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal Amount { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal? SfaContributionPercentage { get; set; }
         public DateTime? CensusDate { get; set; }
     }

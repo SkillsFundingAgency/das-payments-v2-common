@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
 
 namespace SFA.DAS.Payments.Model.Core.Entities
 {
@@ -14,12 +16,14 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public long? TransferSenderAccountId { get; set; }
         public Guid RequiredPaymentEventId { get; set; }
         public Guid EarningEventId { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal Amount { get; set; }
         public string MessagePayload { get; set; }
         public string MessageType { get; set; }
         public DateTime IlrSubmissionDateTime { get; set; }
         public long FundingAccountId { get; set; }
         public TransactionType TransactionType { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal SfaContributionPercentage { get; set; }
         public long? LearnerUln { get; set; }
         public string LearnerReferenceNumber { get; set; }

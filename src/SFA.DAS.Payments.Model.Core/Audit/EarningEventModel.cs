@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using SFA.DAS.Payments.Model.Core.Entities;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
 
 namespace SFA.DAS.Payments.Model.Core.Audit
 {
@@ -12,6 +14,7 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public List<EarningEventPriceEpisodeModel> PriceEpisodes { get; set; }
         public int? AgeAtStartOfLearning { get; set; }
         public string IlrFileName { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal? SfaContributionPercentage { get; set; }
         public string EventType { get; set; }
     }

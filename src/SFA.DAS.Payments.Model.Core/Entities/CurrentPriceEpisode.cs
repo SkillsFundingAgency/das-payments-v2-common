@@ -1,9 +1,14 @@
-﻿namespace SFA.DAS.Payments.Model.Core.Entities
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
+
+namespace SFA.DAS.Payments.Model.Core.Entities
 {
     public class CurrentPriceEpisode
     {
         public long Id { get; set; }
         public string PriceEpisodeIdentifier { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal AgreedPrice { get; set; }
         public long Uln { get; set; }
         public long Ukprn { get; set; }
