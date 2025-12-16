@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
 
 namespace SFA.DAS.Payments.Model.Core.Entities
 {
@@ -15,6 +17,7 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public string LearnerReferenceNumber { get; set; }
         public long LearnerUln { get; set; }
         public string PriceEpisodeIdentifier { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal Amount { get; set; }
         public CollectionPeriod CollectionPeriod { get; set; }
         public byte DeliveryPeriod { get; set; }
@@ -28,6 +31,7 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public TransactionType TransactionType { get; set; }
         public FundingSourceType FundingSource { get; set; }
         public DateTime IlrSubmissionDateTime { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal SfaContributionPercentage { get; set; }
         public long JobId { get; set; }
         public long? AccountId { get; set; }
