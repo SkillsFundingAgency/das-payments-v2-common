@@ -19,7 +19,7 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.PriceEpisodeIdentifier).HasColumnName(@"PriceEpisodeIdentifier");
             builder.Property(x => x.TransactionType).HasColumnName(@"TransactionType");
             builder.Property(x => x.DeliveryPeriod).HasColumnName(@"DeliveryPeriod");
-            builder.Property(x => x.Amount).HasColumnName(@"Amount");
+            builder.Property(x => x.Amount).HasColumnName(@"Amount").HasPrecision(15, 5);
             builder.Property(x => x.SfaContributionPercentage).HasColumnName(@"SfaContributionPercentage");
             builder.Property(x => x.CensusDate).HasColumnName(@"CensusDate");
             builder.HasOne(x => x.EarningEvent)

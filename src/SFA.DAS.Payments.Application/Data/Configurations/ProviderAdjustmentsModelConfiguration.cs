@@ -18,7 +18,7 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.PaymentType).HasColumnName("PaymentType").IsRequired();
             builder.Property(x => x.CollectionPeriodName).HasColumnName("CollectionPeriodName").IsRequired();
             builder.Property(x => x.PaymentTypeName).HasColumnName("PaymentTypeName").IsRequired();
-            builder.Property(x => x.Amount).HasColumnName("Amount").IsRequired();
+            builder.Property(x => x.Amount).HasColumnName("Amount").IsRequired().HasPrecision(15, 5);
             builder.Property(x => x.CollectionPeriodMonth).HasColumnName("CollectionPeriodMonth").IsRequired();
             builder.Property(x => x.CollectionPeriodYear).HasColumnName("CollectionPeriodYear").IsRequired();
         }

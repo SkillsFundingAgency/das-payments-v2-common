@@ -21,7 +21,7 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.ClawbackSourcePaymentEventId).HasColumnName(@"ClawbackSourcePaymentEventId");
             builder.Property(x => x.EventTime).HasColumnName(@"EventTime").IsRequired();
             builder.Property(x => x.PriceEpisodeIdentifier).HasColumnName(@"PriceEpisodeIdentifier").IsRequired();
-            builder.Property(x => x.Amount).HasColumnName(@"Amount").IsRequired();
+            builder.Property(x => x.Amount).HasColumnName(@"Amount").IsRequired().HasPrecision(15, 5);
             builder.OwnsOne(p => p.CollectionPeriod, cp =>
             {
                 cp.Property(x => x.Period).HasColumnName(@"CollectionPeriod").IsRequired();

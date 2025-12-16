@@ -12,7 +12,7 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName(@"Id");
             builder.Property(x => x.Ukprn).HasColumnName(@"Ukprn");
-            builder.Property(x => x.Amount).HasColumnName(@"Amount");
+            builder.Property(x => x.Amount).HasColumnName(@"Amount").HasPrecision(15, 5);
             builder.Property(x => x.AcademicYear).HasColumnName(@"AcademicYear");
             builder.Property(x => x.AccountId).HasColumnName(@"AccountId");
             builder.Property(x => x.TransferSenderAccountId).HasColumnName(@"TransferSenderAccountId");
