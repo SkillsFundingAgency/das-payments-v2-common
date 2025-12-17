@@ -1,5 +1,7 @@
-﻿using System;
-using SFA.DAS.Payments.Model.Core.Entities;
+﻿using SFA.DAS.Payments.Model.Core.Entities;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
 
 namespace SFA.DAS.Payments.Model.Core.Audit
 {
@@ -13,7 +15,9 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public long Ukprn { get; set; }
         public ContractType ContractType { get; set; }
         public TransactionType TransactionType { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal SfaContributionPercentage { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal Amount { get; set; }
         public CollectionPeriod CollectionPeriod { get; set; }
         public byte DeliveryPeriod { get; set; }
@@ -35,7 +39,9 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public DateTime? PlannedEndDate { get; set; }
         public DateTime? ActualEndDate { get; set; }
         public byte? CompletionStatus { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal? CompletionAmount { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal? InstalmentAmount { get; set; }
         public short? NumberOfInstalments { get; set; }
         public DateTime? LearningStartDate { get; set; }

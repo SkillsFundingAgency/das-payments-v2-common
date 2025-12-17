@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
 
 namespace SFA.DAS.Payments.Model.Core.Entities
 {
@@ -10,6 +12,7 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public int SubmissionAcademicYear { get; set; }
         public int PaymentType { get; set; }
         public string PaymentTypeName { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal Amount { get; set; }
         public string CollectionPeriodName { get; set; }
         public int CollectionPeriodYear { get; set; }

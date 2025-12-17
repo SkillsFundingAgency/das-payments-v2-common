@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using static SFA.DAS.Payments.Model.Core.Config.Consts;
 
 namespace SFA.DAS.Payments.Model.Core.Audit
 {
@@ -23,7 +25,9 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         DateTime? PlannedEndDate { get; set; }
         DateTime? ActualEndDate { get; set; }
         byte CompletionStatus { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         decimal CompletionAmount { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         decimal InstalmentAmount { get; set; }
         short NumberOfInstalments { get; set; }
         DateTime? LearningStartDate { get; set; }
@@ -37,7 +41,9 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public DateTime? PlannedEndDate { get; set; }
         public DateTime? ActualEndDate { get; set; }
         public byte CompletionStatus { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal CompletionAmount { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal InstalmentAmount { get; set; }
         public short NumberOfInstalments { get; set; }
         public DateTime? LearningStartDate { get; set; }

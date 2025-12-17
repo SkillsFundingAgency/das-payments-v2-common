@@ -40,7 +40,9 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public DateTime? PlannedEndDate { get; set; }
         public DateTime? ActualEndDate { get; set; }
         public byte? CompletionStatus { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal? CompletionAmount { get; set; }
+        [Column(TypeName = DbDecimalPlaceConfig)]
         public decimal? InstalmentAmount { get; set; }
         public short? NumberOfInstalments { get; set; }
         public string AgreementId { get; set; }
