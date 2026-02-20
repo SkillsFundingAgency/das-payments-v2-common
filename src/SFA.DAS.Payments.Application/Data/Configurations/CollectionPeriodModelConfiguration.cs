@@ -17,8 +17,6 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.ReferenceDataValidationDate).HasColumnName(@"ReferenceDataValidationDate");
             builder.Property(x => x.CompletionDate).HasColumnName(@"CompletionDate").IsRequired();
             builder.Property(x => x.Status).HasColumnName(@"Status");
-            builder.Property(x => x.StartDate).HasColumnName(@"StartDate");
-            builder.Property(x => x.EndDate).HasColumnName(@"EndDate");
         }
     }
 }

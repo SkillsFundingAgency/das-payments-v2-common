@@ -9,9 +9,7 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public byte Period { get; set; }
         public DateTime? ReferenceDataValidationDate { get; set; }
         public DateTime CompletionDate { get; set; }
-        public CollectionPeriodStatus? Status { get; set; } 
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public CollectionPeriodStatus? Status { get; set; } // 
     }
 
 }
