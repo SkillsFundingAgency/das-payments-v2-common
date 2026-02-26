@@ -8,7 +8,7 @@ namespace SFA.DAS.Payments.Model.Core
 
         public int ProgrammeType { get; set; }
 
-        public string StandardCode { get; set; }
+        public int StandardCode { get; set; }
 
         public int FrameworkCode { get; set; }
 
