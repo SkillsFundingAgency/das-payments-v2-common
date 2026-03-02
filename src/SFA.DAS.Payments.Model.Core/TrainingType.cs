@@ -2,6 +2,6 @@
 {
     public enum TrainingType : byte
     {
-        ApprenticeshipUnits = 4,
+        ApprenticeshipUnit = 4,
     }
 }
