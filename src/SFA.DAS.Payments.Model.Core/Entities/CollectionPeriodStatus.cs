@@ -1,6 +1,6 @@
 ﻿namespace SFA.DAS.Payments.Model.Core.Entities
 {
-    public enum CollectionPeriodStatus
+    public enum CollectionPeriodStatus : byte
     {
         NotStarted = 1,
         Open = 2,
