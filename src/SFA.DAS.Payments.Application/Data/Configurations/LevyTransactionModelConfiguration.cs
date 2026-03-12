@@ -38,6 +38,9 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.ApprenticeshipId).HasColumnName(@"ApprenticeshipId");
             builder.Property(x => x.ApprenticeshipEmployerType).HasColumnName(@"ApprenticeshipEmployerType");
             builder.Property(x => x.ClawbackSourcePaymentEventId).HasColumnName(@"ClawbackSourcePaymentEventId");
+            builder.Property(x => x.CourseType).HasColumnName(@"CourseType");
+            builder.Property(x => x.LearningType).HasColumnName(@"LearningType");
+            builder.Property(x => x.CourseCode).HasColumnName(@"CourseCode");
         }
     }
 }

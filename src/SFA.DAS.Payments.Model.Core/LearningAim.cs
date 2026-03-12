@@ -10,6 +10,8 @@ namespace SFA.DAS.Payments.Model.Core
 
         public int StandardCode { get; set; }
 
+        public string CourseCode { get; set; }
+
         public int FrameworkCode { get; set; }
 
         public int PathwayCode { get; set; }
@@ -18,6 +20,8 @@ namespace SFA.DAS.Payments.Model.Core
         public long SequenceNumber { get; set; }
 
         public DateTime StartDate { get; set; }
+
+        public TrainingType LearningType { get; set;}
 
         public LearningAim Clone()
         {
