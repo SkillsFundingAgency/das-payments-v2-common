@@ -34,8 +34,8 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public ApprenticeshipEmployerType ApprenticeshipEmployerType { get; set; }
         public Guid? ClawbackSourcePaymentEventId { get; set; }
         public FundingPlatformType FundingPlatformType { get; set; }
-        public byte CourseType { get; set; }
-        public byte LearningType { get; set; }
+        public CourseType CourseType { get; set; }
+        public LearningType LearningType { get; set; }
         public string CourseCode { get; set; }
     }
 }
