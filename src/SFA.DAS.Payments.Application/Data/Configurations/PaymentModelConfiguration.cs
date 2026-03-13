@@ -61,6 +61,9 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.LearningAimSequenceNumber).HasColumnName(@"LearningAimSequenceNumber");
             builder.Property(x => x.AgeAtStartOfLearning).HasColumnName(@"AgeAtStartOfLearning");
             builder.Property(x => x.FundingPlatformType).HasColumnName(@"FundingPlatformType");
+            builder.Property(x => x.CourseType).HasColumnName(@"CourseType");
+            builder.Property(x => x.LearningType).HasColumnName(@"LearningType");
+            builder.Property(x => x.CourseCode).HasColumnName(@"CourseCode");
         }
     }
 }
