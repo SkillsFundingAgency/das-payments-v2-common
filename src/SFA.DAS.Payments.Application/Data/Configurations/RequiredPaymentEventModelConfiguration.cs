@@ -55,6 +55,9 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.ApprenticeshipEmployerType).HasColumnName(@"ApprenticeshipEmployerType");
             builder.Property(x => x.NonPaymentReason).HasColumnName(@"NonPaymentReason");
             builder.Property(x => x.EventType).HasColumnName(@"EventType");
+            builder.Property(x => x.CourseType).HasColumnName(@"CourseType");
+            builder.Property(x => x.LearningType).HasColumnName(@"LearningType");
+            builder.Property(x => x.CourseCode).HasColumnName(@"CourseCode");
         }
     }
 }
