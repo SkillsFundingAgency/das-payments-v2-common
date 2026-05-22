@@ -15,7 +15,7 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         int LearningAimPathwayCode { get; set; }
         string LearningAimFundingLineType { get; set; }
         long Ukprn { get; set; }
-        DateTime IlrSubmissionDateTime { get; set; }
+        DateTime? IlrSubmissionDateTime { get; set; }
         long JobId { get; set; }
         DateTimeOffset EventTime { get; set; }
         short AcademicYear { get; set; }
@@ -27,6 +27,7 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         decimal InstalmentAmount { get; set; }
         short NumberOfInstalments { get; set; }
         DateTime? LearningStartDate { get; set; }
+
     }
 
     public abstract class PaymentsEventModel : IPaymentsEventModel
@@ -51,7 +52,7 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public int LearningAimPathwayCode { get; set; }
         public string LearningAimFundingLineType { get; set; }
         public long Ukprn { get; set; }
-        public DateTime IlrSubmissionDateTime { get; set; }
+        public DateTime? IlrSubmissionDateTime { get; set; }
         public long JobId { get; set; }
         public DateTimeOffset EventTime { get; set; }
         public long? LearningAimSequenceNumber { get; set; }
