@@ -26,7 +26,7 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public int LearningAimPathwayCode { get; set; }
         public string LearningAimFundingLineType { get; set; }
         public string AgreementId { get; set; }
-        public DateTime IlrSubmissionDateTime { get; set; }
+        public DateTime? IlrSubmissionDateTime { get; set; }
         public long JobId { get; set; }
         public DateTimeOffset EventTime { get; set; }
         public long? AccountId { get; set; }
