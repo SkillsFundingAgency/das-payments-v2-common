@@ -46,5 +46,4 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public string EventType { get; set; }
         public int? AgeAtStartOfLearning { get; set; }
     }
-
 }
