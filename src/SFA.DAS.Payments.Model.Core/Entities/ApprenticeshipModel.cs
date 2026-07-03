@@ -26,6 +26,7 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public List<ApprenticeshipPriceEpisodeModel> ApprenticeshipPriceEpisodes { get; set; }
         public ApprenticeshipEmployerType ApprenticeshipEmployerType { get; set; }
         public List<ApprenticeshipPauseModel> ApprenticeshipPauses { get; set; }
+
         public DateTimeOffset CreationDate { get; set; }
         public CourseType? CourseType { get; set; }
         public LearningType? LearningType { get; set; }

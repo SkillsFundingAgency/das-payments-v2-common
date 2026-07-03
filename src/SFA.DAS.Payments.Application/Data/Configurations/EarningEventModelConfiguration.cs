@@ -35,7 +35,10 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.SfaContributionPercentage).HasColumnName(@"SfaContributionPercentage");
             builder.Property(x => x.IlrFileName).HasColumnName(@"IlrFileName");
             builder.Property(x => x.EventType).HasColumnName(@"EventType");
-          
+            builder.Property(x => x.CourseType).HasColumnName(@"CourseType");
+            builder.Property(x => x.LearningType).HasColumnName(@"LearningType");
+            builder.Property(x => x.CourseCode).HasColumnName(@"CourseCode");
+
             builder.Ignore(x => x.ActualEndDate);
             builder.Ignore(x => x.CompletionAmount);
             builder.Ignore(x => x.CompletionStatus);

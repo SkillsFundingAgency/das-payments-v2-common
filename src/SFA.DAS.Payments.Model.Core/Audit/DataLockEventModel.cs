@@ -19,5 +19,8 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public bool IsPayable { get; set; }
         public DataLockSource DataLockSource { get; set; }
         public int? AgeAtStartOfLearning { get; set; }
+        byte? CourseType { get; set; }
+        string CourseCode { get; set; }
+        byte? LearningType { get; set; }
     }
 }
