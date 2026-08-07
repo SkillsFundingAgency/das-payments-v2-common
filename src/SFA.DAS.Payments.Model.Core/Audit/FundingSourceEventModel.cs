@@ -27,7 +27,7 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public ContractType ContractType { get; set; }
         public TransactionType TransactionType { get; set; }
         public FundingSourceType FundingSource { get; set; }
-        public DateTime IlrSubmissionDateTime { get; set; }
+        public DateTime? IlrSubmissionDateTime { get; set; }
         public decimal SfaContributionPercentage { get; set; }
         public long JobId { get; set; }
         public long? AccountId { get; set; }
