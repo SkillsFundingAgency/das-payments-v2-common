@@ -37,5 +37,6 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public CourseType? CourseType { get; set; }
         public LearningType? LearningType { get; set; }
         public string CourseCode { get; set; }
+        public Guid? ExternalEarningsId { get; set; }
     }
 }
