@@ -47,6 +47,7 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public int? AgeAtStartOfLearning { get; set; }
         public CourseType? CourseType { get; set; }
         public LearningType? LearningType { get; set; }
+        public FundingPlatformType? FundingPlatformType { get; set; }
         public string CourseCode { get; set; }
         public Guid? ExternalEarningsId { get; set; }
     }
