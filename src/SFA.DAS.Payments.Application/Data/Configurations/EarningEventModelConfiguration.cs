@@ -38,6 +38,7 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.CourseType).HasColumnName(@"CourseType");
             builder.Property(x => x.LearningType).HasColumnName(@"LearningType");
             builder.Property(x => x.CourseCode).HasColumnName(@"CourseCode");
+            builder.Property(x => x.ExternalEarningsId).HasColumnName(@"ExternalEarningsId");
 
             builder.Ignore(x => x.ActualEndDate);
             builder.Ignore(x => x.CompletionAmount);

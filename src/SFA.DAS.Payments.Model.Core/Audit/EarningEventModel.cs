@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using SFA.DAS.Payments.Model.Core.Entities;
+﻿using SFA.DAS.Payments.Model.Core.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace SFA.DAS.Payments.Model.Core.Audit
 {
@@ -14,5 +15,6 @@ namespace SFA.DAS.Payments.Model.Core.Audit
         public string IlrFileName { get; set; }
         public decimal? SfaContributionPercentage { get; set; }
         public string EventType { get; set; }
+        public Guid? ExternalEarningsId { get; set; }
     }
 }
