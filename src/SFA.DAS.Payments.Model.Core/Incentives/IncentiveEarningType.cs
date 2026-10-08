@@ -13,5 +13,7 @@
         SecondDisadvantagePayment = 12,
         LearningSupport = 15,
         CareLeaverApprenticePayment = 16,
+        FirstEmployerHiringPayment = 18,
+        SecondEmployerHiringPayment = 19,
     }
 }
