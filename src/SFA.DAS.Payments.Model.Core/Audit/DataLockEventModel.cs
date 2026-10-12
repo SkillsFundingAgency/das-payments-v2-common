@@ -8,7 +8,6 @@ namespace SFA.DAS.Payments.Model.Core.Audit
     {
         public long Id { get; set; }
         public Guid EarningEventId { get; set; }
-        public Guid? ExternalEarningsId { get; set; }
         public ContractType ContractType { get; set; }
         public string AgreementId { get; set; }
         public List<DataLockEventPriceEpisodeModel> PriceEpisodes { get; set; }
