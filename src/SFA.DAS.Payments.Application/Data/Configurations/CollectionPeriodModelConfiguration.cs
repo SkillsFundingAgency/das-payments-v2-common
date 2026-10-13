@@ -17,10 +17,9 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.ReferenceDataValidationDate).HasColumnName(@"ReferenceDataValidationDate");
             builder.Property(x => x.CompletionDate).HasColumnName(@"CompletionDate");
             builder.Property(x => x.Status).HasColumnName(@"Status");
-            builder.Property(x => x.CalendarMonth).HasColumnName(@"CalendarMonth");
-            builder.Property(x => x.CalendarYear).HasColumnName(@"CalendarYear");
             builder.Property(x => x.StartDateTime).HasColumnName(@"StartDateTime");
             builder.Property(x => x.EndDateTime).HasColumnName(@"EndDateTime");
+
         }
     }
 }
