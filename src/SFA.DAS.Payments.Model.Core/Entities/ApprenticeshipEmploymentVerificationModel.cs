@@ -13,5 +13,6 @@ namespace SFA.DAS.Payments.Model.Core.Entities
         public byte SecondHiringGrantStatus { get; set; }
         public Guid? SecondHiringGrantCorrelationId { get; set; }
         public DateTime CreationDate { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

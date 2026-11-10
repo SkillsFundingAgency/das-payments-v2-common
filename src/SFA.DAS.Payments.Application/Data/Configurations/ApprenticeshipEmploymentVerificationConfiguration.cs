@@ -20,6 +20,7 @@ namespace SFA.DAS.Payments.Application.Data.Configurations
             builder.Property(x => x.SecondHiringGrantStatus).HasColumnName("SecondHiringGrantStatus").IsRequired();
             builder.Property(x => x.SecondHiringGrantCorrelationId).HasColumnName("SecondHiringGrantCorrelationId");
             builder.Property(x => x.CreationDate).HasColumnName("CreationDate").IsRequired();
+            builder.Property(x => x.UpdateDate).HasColumnName("UpdateDate").IsRequired();
 
             builder.HasIndex(x => x.ApprenticeshipId).IsUnique();
 
