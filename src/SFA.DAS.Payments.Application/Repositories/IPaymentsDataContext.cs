@@ -26,14 +26,13 @@ namespace SFA.DAS.Payments.Application.Repositories
         DbSet<DataLockEventNonPayablePeriodModel> DataLockEventNonPayablePeriod { get; }
         DbSet<DataLockEventNonPayablePeriodFailureModel> DataLockEventNonPayablePeriodFailure { get; }
         DbSet<RequiredPaymentEventModel> RequiredPaymentEvent { get; }
-
         DbSet<PaymentModelWithRequiredPaymentId> PaymentsWithRequiredPayments { get; }
         DbSet<ReceivedDataLockEvent> ReceivedDataLockEvents { get; set; }
         DbSet<CurrentPriceEpisode> CurrentPriceEpisodes { get; set; }
         DbSet<ProviderAdjustmentModel> ProviderAdjustments { get; }
         DbSet<CollectionPeriodModel> CollectionPeriod { get; }
-
         DbSet<SubmissionJobsToBeDeletedModel> SubmissionJobsToBeDeleted { get; set; }
+        DbSet<ApprenticeshipEmploymentVerificationModel> ApprenticeshipEmploymentVerification { get; set; }
 
         DatabaseFacade Database { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));

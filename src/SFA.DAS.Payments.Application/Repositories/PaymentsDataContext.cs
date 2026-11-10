@@ -29,13 +29,9 @@ namespace SFA.DAS.Payments.Application.Repositories
         public virtual DbSet<RequiredPaymentEventModel> RequiredPaymentEvent { get; set; }
         public virtual DbSet<CollectionPeriodModel> CollectionPeriod { get; protected set; }
         public virtual DbSet<LevyAccountAuditModel> LevyAccountAudits { get; protected set; }
-
-
-
-        public virtual DbSet<ProviderAdjustmentModel> ProviderAdjustments { get; protected set; }
-
-        
+        public virtual DbSet<ProviderAdjustmentModel> ProviderAdjustments { get; protected set; }        
         public virtual DbSet<SubmissionJobsToBeDeletedModel> SubmissionJobsToBeDeleted { get; set; }
+        public virtual DbSet<ApprenticeshipEmploymentVerificationModel> ApprenticeshipEmploymentVerification { get; set; }
 
         public PaymentsDataContext(string connectionString)
         {
@@ -71,6 +67,7 @@ namespace SFA.DAS.Payments.Application.Repositories
             modelBuilder.ApplyConfiguration(new CollectionPeriodModelConfiguration());
             modelBuilder.ApplyConfiguration(new LevyAccountAuditModelConfiguration());
             modelBuilder.ApplyConfiguration(new SubmissionJobsToBeDeletedModelConfiguration());
+            modelBuilder.ApplyConfiguration(new ApprenticeshipEmploymentVerificationConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
